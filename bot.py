@@ -55,49 +55,25 @@ def x_client() -> tweepy.Client:
     )
 
 
-def tweet_with_reply(main_text: str) -> str:
-    """
-    Posts main tweet + auto reply.
-    Returns the main tweet id.
-    """
+def tweet_with_reply(main_text: str) -> None:
     client = x_client()
     tw = client.create_tweet(text=main_text)
-    tweet_id = str(tw.data["id"])
-
+    tweet_id = tw.data["id"]
     reply = "🔁 Takip etmek için takip edin.\n\n📊 Son 30 gün istatistiği yakında paylaşılacak."
     client.create_tweet(text=reply, in_reply_to_tweet_id=tweet_id)
 
-    return tweet_id
+
+def tweet_simple(text: str) -> None:
+    x_client().create_tweet(text=text)
 
 
-def tweet_simple(text: str) -> str:
-    tw = x_client().create_tweet(text=text)
-    return str(tw.data["id"])
-
-
-def detect_slot(now: datetime):
-    """
-    Schedule: 14:00, 19:00, 23:59 (TRT)
-
-    Tolerans:
-      - 14:00-14:09 => t14
-      - 19:00-19:09 => t19
-      - 23:59 exact => t2359 (final)
-
-    Slot dışıysa (None,None,None) döner ve bot hiçbir şey yapmadan çıkar.
-    """
-    h, m = now.hour, now.minute
-
-    if h == 14 and 0 <= m <= 9:
+def detect_slot(now: datetime) -> tuple[str, str, bool]:
+    # schedule: 14:00, 19:00, 23:59 TRT
+    if now.hour == 14 and now.minute == 0:
         return ("t14", "14:00", False)
-
-    if h == 19 and 0 <= m <= 9:
+    if now.hour == 19 and now.minute == 0:
         return ("t19", "19:00", False)
-
-    if h == 23 and m == 59:
-        return ("t2359", "23:59", True)
-
-    return (None, None, None)
+    return ("t2359", "23:59", True)
 
 
 # -------------------------
@@ -105,10 +81,11 @@ def detect_slot(now: datetime):
 # -------------------------
 def load_state() -> dict:
     default = {
-        "daily": {},             # {"YYYY-MM-DD": {"t14":bool,"t19":bool,"t2359":bool,"tweeted":bool,"spoke_any":bool,"kurt_any":bool,"last_url":str|None,"last_tweet_id":str|None}}
-        "streak": 0,             # SADECE konuştuğu günler içinde: kaç konuşma günüdür “Kürt” demiyor
-        "last_monthly_post": "", # "YYYY-MM"
-        "last_viral_for_streak": 0,  # viral tweet'i aynı streak için 1 kez atmak için
+        "daily": {},
+        # "streak" = SADECE konuştuğu günler içinde: kaç konuşma günüdür “Kürt” demiyor
+        "streak": 0,
+        # "YYYY-MM"
+        "last_monthly_post": ""
     }
     if not os.path.exists(STATE_FILE):
         return default
@@ -125,16 +102,13 @@ def load_state() -> dict:
 
     if not isinstance(data.get("daily"), dict):
         data["daily"] = {}
-
     try:
         data["streak"] = int(data.get("streak", 0))
     except Exception:
         data["streak"] = 0
 
-    try:
-        data["last_viral_for_streak"] = int(data.get("last_viral_for_streak", 0))
-    except Exception:
-        data["last_viral_for_streak"] = 0
+    if not isinstance(data.get("last_monthly_post"), str):
+        data["last_monthly_post"] = ""
 
     return data
 
@@ -149,7 +123,7 @@ def cleanup_daily(state: dict, keep_days: int = 30) -> None:
         state["daily"] = {}
         return
     cutoff = (datetime.now(TZ).date() - timedelta(days=keep_days)).isoformat()
-    to_delete = [k for k in list(state["daily"].keys()) if k < cutoff]
+    to_delete = [k for k in state["daily"].keys() if k < cutoff]
     for k in to_delete:
         del state["daily"][k]
 
@@ -162,8 +136,7 @@ def ensure_history_header() -> None:
         return
     with open(HISTORY_FILE, "w", encoding="utf-8", newline="") as f:
         w = csv.writer(f)
-        # spoke: Y/N, kurt: Y/N (kurt sadece spoke=Y iken anlamlı)
-        w.writerow(["date", "spoke", "kurt", "url"])
+        w.writerow(["date", "spoke", "kurt", "url"])  # spoke: Y/N, kurt: Y/N
 
 
 def append_history(d: date, spoke: bool, kurt: bool, url: str | None) -> None:
@@ -218,22 +191,23 @@ def monthly_stats_spoken_only(year: int, month: int) -> dict:
 # CHP parsing
 # -------------------------
 def find_latest_ozel_link(gundem_html: str) -> str | None:
-    """
-    Finds the latest link whose anchor text contains "Özgür Özel" / "Ozgur Ozel".
-    """
     soup = BeautifulSoup(gundem_html, "html.parser")
+
     candidates = []
     for a in soup.select("a[href]"):
         t = (a.get_text(" ", strip=True) or "").lower()
         if ("özgür özel" not in t) and ("ozgur ozel" not in t):
             continue
+
         href = a.get("href") or ""
         if href.startswith("/"):
             href = BASE + href
+
         if href.startswith(BASE):
             u = normalize_url(href)
             if u and u not in candidates:
                 candidates.append(u)
+
     return candidates[0] if candidates else None
 
 
@@ -254,47 +228,43 @@ def main():
     print("BOT STARTED:", datetime.now().isoformat())
 
     now = datetime.now(TZ)
-    slot_key, slot_label, is_final = detect_slot(now)
 
-    if slot_key is None:
-        print("Not a scheduled slot time. Exiting.")
-        return
+    # Backfill override: FORCE_DATE=YYYY-MM-DD
+    override = os.getenv("FORCE_DATE", "").strip()
+    if override:
+        try:
+            today = date.fromisoformat(override)
+        except Exception:
+            raise RuntimeError("FORCE_DATE must be YYYY-MM-DD")
+    else:
+        today = now.date()
 
-    # IMPORTANT: We intentionally use "today = now.date()".
-    # (No after-midnight fallback) to avoid wrong-day tweets.
-    today = now.date()
     today_key = today.isoformat()
     date_str = tr_date_str(today)
 
-    print(f"NOW: {now.isoformat()} | SLOT: {slot_key} {slot_label} final={is_final} | REPORT_DAY: {today_key}")
+    slot_key, slot_label, is_final = detect_slot(now)
+    print(f"NOW: {now.isoformat()} | SLOT: {slot_key} {slot_label} final={is_final} | TODAY_KEY: {today_key}")
 
     state = load_state()
     cleanup_daily(state, keep_days=30)
 
-    # Daily state for today
     daily = state["daily"].get(
         today_key,
-        {
-            "t14": False,
-            "t19": False,
-            "t2359": False,
-            "tweeted": False,      # ✅ ensures max 1 main tweet per day
-            "spoke_any": False,
-            "kurt_any": False,
-            "last_url": None,
-            "last_tweet_id": None,
-        }
+        {"t14": False, "t19": False, "t2359": False, "spoke_any": False, "kurt_any": False, "last_url": None}
     )
 
-    # If this slot already processed, exit
+    # Aynı slot tekrar çalıştıysa çık
     if daily.get(slot_key) is True:
         print("This slot already processed. Exiting.")
         state["daily"][today_key] = daily
         save_state(state)
         return
 
-    # Monthly stats (1st day of month, after 09:00 TRT)
-    if today.day == 1 and now.hour >= 9:
+    # -------------------------
+    # Aylık istatistik (ayın 1'i, 09:00+): sadece konuştuğu günler içinde
+    # Not: Backfill koşusunda monthly spam olmasın diye sadece override yoksa çalıştırıyoruz.
+    # -------------------------
+    if (not override) and today.day == 1 and now.hour >= 9:
         prev_key, py, pm = previous_month(today)
         if state.get("last_monthly_post") != prev_key:
             s = monthly_stats_spoken_only(py, pm)
@@ -306,22 +276,20 @@ def main():
                     f"⬜ “Kürt” demediği konuşma günü: {s['kurt_no']}\n\n"
                     f"Kaynak: {GUNDEM_URL}"
                 )
+                print("Posting monthly stats…")
                 tweet_simple(msg)
                 state["last_monthly_post"] = prev_key
                 save_state(state)
-                print("Monthly stats tweeted.")
 
-    # Fetch latest Ozel link + check for "kürt"
-    latest_url = None
+    # -------------------------
+    # CHP kontrol
+    # -------------------------
     spoke_now = False
     kurt_now = False
+    latest_url = None
 
-    try:
-        gundem_html = fetch(GUNDEM_URL)
-        latest_url = find_latest_ozel_link(gundem_html)
-    except Exception as e:
-        print("ERROR fetching gundem:", repr(e))
-        latest_url = None
+    gundem_html = fetch(GUNDEM_URL)
+    latest_url = find_latest_ozel_link(gundem_html)
 
     if latest_url:
         spoke_now = True
@@ -330,12 +298,13 @@ def main():
             text = extract_article_text(article_html)
             kurt_now = contains_kurt(text)
         except Exception as e:
-            print("ERROR fetching article:", repr(e))
-            # If article fetch fails, treat as "spoke but unknown content"
-            # We'll keep spoke_now True but kurt_now False to avoid false positives.
+            # Site geçici hata vs. olursa false kabul edip loglayalım
+            print("Article fetch/parse error:", repr(e))
+            spoke_now = True
             kurt_now = False
 
-    # Update accumulators
+    print(f"Detected: spoke_now={spoke_now}, kurt_now={kurt_now}, url={latest_url}")
+
     if spoke_now:
         daily["spoke_any"] = True
     if kurt_now:
@@ -344,70 +313,65 @@ def main():
         daily["last_url"] = latest_url
 
     streak = int(state.get("streak", 0))
-    viral_already_for = int(state.get("last_viral_for_streak", 0))
 
-    # -------------------------
-    # Tweeting rules:
-    #
-    # - Max 1 main tweet per day (daily["tweeted"])
-    #
-    # - Priority:
-    #   1) If final slot: always tweet summary (spoke/no-spoke + kurt result)
-    #   2) If not final:
-    #        - If "spoke_any" AND NOT "kurt_any" AND NOT tweeted yet -> tweet "Henüz demedi" (only once)
-    #        - Otherwise no tweet
-    #
-    # - If later slot finds "kurt_any" True (dedi), we DO NOT tweet again until final.
-    # -------------------------
-
-    # Intermediate slots (14:00 / 19:00)
+    # =========================
+    # ARA TWEET (14:00 / 19:00)
+    # =========================
     if not is_final:
-        if daily["tweeted"]:
-            print("Already tweeted today. Skipping intermediate tweet.")
-        else:
-            # We only care when he spoke but didn't say "kürt"
-            if daily["spoke_any"] and (not daily["kurt_any"]):
-                main_text = (
-                    "Özgür Özel bugün Kürt dedi mi?\n\n"
-                    f"⬜ {slot_label} itibarıyla: HENÜZ DEMEDİ\n\n"
-                    f"📅 {date_str}"
-                )
-                tweet_id = tweet_with_reply(main_text)
-                daily["tweeted"] = True
-                daily["last_tweet_id"] = tweet_id
-                print("Intermediate tweet posted:", tweet_id)
-            else:
-                print("No tweet condition met at intermediate slot.")
+        # Eğer gün içinde “Kürt dedi” yakalandıysa ara tweet yok (finale bırakalım)
+        if daily["kurt_any"]:
+            print("Kurt already detected earlier today; skipping interim tweet.")
+            daily[slot_key] = True
+            state["daily"][today_key] = daily
+            save_state(state)
+            return
+
+        # ÖNEMLİ: Konuşma yoksa tweet atma (konuşma yokken “henüz demedi” demiyoruz)
+        if not daily["spoke_any"]:
+            print("No speech detected yet; skipping interim tweet.")
+            daily[slot_key] = True
+            state["daily"][today_key] = daily
+            save_state(state)
+            return
+
+        # Ara tweet sadece “konuştu ama Kürt yok” durumunda ve sadece 14:00 için isteniyordu:
+        # Kullanıcı talebi: 14:00 tweeti “henüz demedi” ise atılsın; 19:00 için de çalışabilir ama spam olmasın diye
+        # streak>=2 koşulunu koruyoruz.
+        if streak < 2:
+            print("Streak < 2; skipping interim tweet to reduce spam.")
+            daily[slot_key] = True
+            state["daily"][today_key] = daily
+            save_state(state)
+            return
+
+        main_text = (
+            "Özgür Özel bugün Kürt dedi mi?\n\n"
+            f"⬜ {slot_label} itibarıyla: HENÜZ DEMEDİ\n\n"
+            f"⏱ {streak} konuşma günüdür “Kürt” demiyor.\n\n"
+            f"📅 {date_str}"
+        )
+
+        print("Posting interim tweet…")
+        tweet_with_reply(main_text)
 
         daily[slot_key] = True
         state["daily"][today_key] = daily
         save_state(state)
         return
 
-    # Final slot (23:59) => always tweet daily summary
-    if daily["tweeted"]:
-        print("Main tweet already posted earlier today, but final still allowed? -> No, keeping 1 tweet/day policy.")
-        # We stick to 1 tweet/day: if already tweeted earlier, do NOT tweet final again.
-        # But we SHOULD still update streak/history at final.
-        pass
-
-    # Determine final outcome
+    # =========================
+    # FINAL TWEET (23:59)
+    # =========================
     if not daily["spoke_any"]:
-        # Spoke=No -> Tweet "Bugün konuşmadı" (if not already tweeted)
-        if not daily["tweeted"]:
-            main_text = (
-                "Özgür Özel bugün Kürt dedi mi?\n\n"
-                "⬜ SONUÇ: Bugün konuşmadı.\n\n"
-                f"📅 {date_str}"
-            )
-            tweet_id = tweet_with_reply(main_text)
-            daily["tweeted"] = True
-            daily["last_tweet_id"] = tweet_id
-            print("Final 'did not speak' tweet posted:", tweet_id)
-        else:
-            print("Skipping final tweet because 1 tweet/day already posted.")
+        # Konuşmadıysa: sayaç/istatistik güncelleme yok
+        main_text = (
+            "Özgür Özel bugün Kürt dedi mi?\n\n"
+            "⬜ SONUÇ: Bugün konuşmadı.\n\n"
+            f"📅 {date_str}"
+        )
+        print("Posting final (no speech) tweet…")
+        tweet_with_reply(main_text)
 
-        # History: spoke=N (monthly stats ignore for counts)
         append_history(today, spoke=False, kurt=False, url=None)
 
         daily[slot_key] = True
@@ -415,55 +379,43 @@ def main():
         save_state(state)
         return
 
-    # Spoke=Yes
+    # Konuştuysa:
     if daily["kurt_any"]:
-        # He said "Kürt" at least once today
+        # DEDİ -> sayaç sıfırla ve kaynak ver
         state["streak"] = 0
-        state["last_viral_for_streak"] = 0  # reset viral marker
-        if not daily["tweeted"]:
-            src = daily["last_url"] or GUNDEM_URL
-            main_text = (
-                "Özgür Özel bugün Kürt dedi mi?\n\n"
-                "🟥 SONUÇ: DEDİ\n\n"
-                "⏱ Sayaç sıfırlandı.\n\n"
-                f"📅 {date_str}\n\n"
-                f"🔗 Kaynak:\n{src}"
-            )
-            tweet_id = tweet_with_reply(main_text)
-            daily["tweeted"] = True
-            daily["last_tweet_id"] = tweet_id
-            print("Final 'DEDİ' tweet posted:", tweet_id)
-        else:
-            print("Skipping final tweet because 1 tweet/day already posted.")
-
+        src = daily["last_url"] or GUNDEM_URL
+        main_text = (
+            "Özgür Özel bugün Kürt dedi mi?\n\n"
+            "🟥 SONUÇ: DEDİ\n\n"
+            "⏱ Sayaç sıfırlandı.\n\n"
+            f"📅 {date_str}\n\n"
+            f"🔗 Kaynak:\n{src}"
+        )
         append_history(today, spoke=True, kurt=True, url=daily["last_url"])
+        print("Posting final (kurt said) tweet…")
+        tweet_with_reply(main_text)
 
     else:
-        # He spoke but did NOT say "Kürt"
+        # DEMEDİ -> sayaç +1 ve kaynak YOK
         state["streak"] = streak + 1
         st = state["streak"]
 
-        if not daily["tweeted"]:
-            main_text = (
-                "Özgür Özel bugün Kürt dedi mi?\n\n"
-                "⬜ SONUÇ: DEMEDİ\n\n"
-                f"⏱ {st} konuşma günüdür “Kürt” demiyor.\n\n"
-                f"📅 {date_str}"
-            )
-            tweet_id = tweet_with_reply(main_text)
-            daily["tweeted"] = True
-            daily["last_tweet_id"] = tweet_id
-            print("Final 'DEMEDİ' tweet posted:", tweet_id)
-        else:
-            print("Skipping final tweet because 1 tweet/day already posted.")
+        main_text = (
+            "Özgür Özel bugün Kürt dedi mi?\n\n"
+            "⬜ SONUÇ: DEMEDİ\n\n"
+            f"⏱ {st} konuşma günüdür “Kürt” demiyor.\n\n"
+            f"📅 {date_str}"
+        )
 
         append_history(today, spoke=True, kurt=False, url=daily["last_url"])
 
-        # Viral tweet at st == 3, only once for that streak value
-        if st >= 3 and viral_already_for < 3:
+        print("Posting final (kurt NOT said) tweet…")
+        tweet_with_reply(main_text)
+
+        # Viral alarm: 3 konuşma gününe gelince
+        if st == 3:
+            print("Posting viral streak=3 tweet…")
             tweet_simple("⚠️ Özgür Özel 3 konuşma günüdür konuşmalarında “Kürt” demiyor.")
-            state["last_viral_for_streak"] = 3
-            print("Viral tweet posted for streak=3.")
 
     daily[slot_key] = True
     state["daily"][today_key] = daily
