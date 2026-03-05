@@ -27,7 +27,7 @@ jobs:
         with:
           python-version: "3.11"
       - name: Install dependencies
-        run: pip install requests beautifulsoup4 tweepy
+        run: pip install requests beautifulsoup4 tweepy pillow
       - name: Run bot
         env:
           X_API_KEY: ${{ secrets.X_API_KEY }}
