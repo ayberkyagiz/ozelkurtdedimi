@@ -2,15 +2,12 @@ name: twitterbot
 
 on:
   schedule:
-    # Türkiye saati: 14:00
+    # Türkiye saati 14:00  -> UTC 11:00
     - cron: "0 11 * * *"
-
-    # Türkiye saati: 19:00
+    # Türkiye saati 19:00  -> UTC 16:00
     - cron: "0 16 * * *"
-
-    # Türkiye saati: 23:59
+    # Türkiye saati 23:59 -> UTC 20:59
     - cron: "59 20 * * *"
-
   workflow_dispatch:
 
 permissions:
@@ -19,14 +16,17 @@ permissions:
 jobs:
   run:
     runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
 
-      - uses: actions/setup-python@v5
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
         with:
           python-version: "3.11"
 
-      - name: Install deps
+      - name: Install dependencies
         run: pip install requests beautifulsoup4 tweepy
 
       - name: Run bot
