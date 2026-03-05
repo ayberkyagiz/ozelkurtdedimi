@@ -214,6 +214,7 @@ def contains_kurt(text: str) -> bool:
 # Main
 # -------------------------
 def main():
+    print("BOT STARTED:", datetime.now())
     now = datetime.now(TZ)
     today = now.date()
     today_key = today.isoformat()
@@ -352,6 +353,16 @@ def main():
             "⬜ SONUÇ: DEMEDİ\n\n"
             f"⏱ {st} konuşma günüdür “Kürt” demiyor.\n\n"
             f"📅 {date_str}"
+        )
+            # Viral alarm
+    if st == 5:
+        tweet_simple(
+            "⚠️ Özgür Özel 5 gündür konuşmalarında 'Kürt' demiyor."
+        )
+
+    if st == 10:
+        tweet_simple(
+            "⚠️  Özgür Özel 10 gündür konuşmalarında 'Kürt' demiyor."
         )
         append_history(today, spoke=True, kurt=False, url=daily["last_url"])
 
