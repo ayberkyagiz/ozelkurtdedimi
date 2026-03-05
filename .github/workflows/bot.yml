@@ -1,5 +1,4 @@
 name: twitterbot
-
 on:
   schedule:
     - cron: "0 11 * * *"   # 14:00 TRT
@@ -12,28 +11,23 @@ on:
         required: false
         default: ""
       force_slot:
-        description: "Optional: t14 / t19 / t2359"
+        description: "Slot override: t14 / t19 / t2359"
         required: false
         default: ""
-
 permissions:
   contents: write
-
 jobs:
   run:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout
         uses: actions/checkout@v4
-
       - name: Set up Python
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
       - name: Install dependencies
         run: pip install requests beautifulsoup4 tweepy
-
       - name: Run bot
         env:
           X_API_KEY: ${{ secrets.X_API_KEY }}
@@ -43,7 +37,6 @@ jobs:
           FORCE_DATE: ${{ inputs.force_date }}
           FORCE_SLOT: ${{ inputs.force_slot }}
         run: python bot.py
-
       - name: Commit state/history
         run: |
           git config user.name "github-actions"
