@@ -2,13 +2,18 @@ name: twitterbot
 
 on:
   schedule:
+    # UTC saatleri: 14:00, 18:00, 22:00  (NY/Boston için yaklaşık 09:00, 13:00, 17:00)
+    - cron: "0 14 * * *"
+    - cron: "0 18 * * *"
     - cron: "0 22 * * *"
   workflow_dispatch:
+
+permissions:
+  contents: write
 
 jobs:
   run:
     runs-on: ubuntu-latest
-
     steps:
       - uses: actions/checkout@v4
 
@@ -16,11 +21,21 @@ jobs:
         with:
           python-version: "3.11"
 
-      - run: pip install requests beautifulsoup4 tweepy
+      - name: Install deps
+        run: pip install requests beautifulsoup4 tweepy
 
-      - run: python bot.py
+      - name: Run bot
         env:
           X_API_KEY: ${{ secrets.X_API_KEY }}
           X_API_KEY_SECRET: ${{ secrets.X_API_KEY_SECRET }}
           X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+        run: python bot.py
+
+      - name: Commit state/history (avoid duplicates + monthly stats)
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add state.json history.csv || true
+          git commit -m "Update bot state" || echo "No changes"
+          git push || true
