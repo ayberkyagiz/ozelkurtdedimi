@@ -18,10 +18,20 @@ STATE_FILE = "state.json"
 
 
 def load_state():
-    if os.path.exists(STATE_FILE):
-        with open(STATE_FILE, "r") as f:
-            return json.load(f)
-    return {"last_tweet_date": "", "streak": 0}
+
+    if not os.path.exists(STATE_FILE):
+        return {"last_tweet_date": "", "streak": 0}
+
+    with open(STATE_FILE, "r") as f:
+        data = json.load(f)
+
+    if "last_tweet_date" not in data:
+        data["last_tweet_date"] = ""
+
+    if "streak" not in data:
+        data["streak"] = 0
+
+    return data
 
 
 def save_state(state):
@@ -30,22 +40,33 @@ def save_state(state):
 
 
 def check_site():
+
     r = requests.get(URL)
+
     soup = BeautifulSoup(r.text, "html.parser")
+
     text = soup.get_text().lower()
 
-    if "kürt" in text:
-        return True
-    return False
+    return "kürt" in text
 
 
 def turkish_date():
+
     today = datetime.date.today()
 
     months = {
-        1: "Ocak", 2: "Şubat", 3: "Mart", 4: "Nisan",
-        5: "Mayıs", 6: "Haziran", 7: "Temmuz", 8: "Ağustos",
-        9: "Eylül", 10: "Ekim", 11: "Kasım", 12: "Aralık"
+        1: "Ocak",
+        2: "Şubat",
+        3: "Mart",
+        4: "Nisan",
+        5: "Mayıs",
+        6: "Haziran",
+        7: "Temmuz",
+        8: "Ağustos",
+        9: "Eylül",
+        10: "Ekim",
+        11: "Kasım",
+        12: "Aralık"
     }
 
     return f"{today.day} {months[today.month]} {today.year}"
@@ -75,7 +96,7 @@ def main():
     state = load_state()
 
     if state["last_tweet_date"] == today:
-        print("Bugün zaten tweet atıldı")
+        print("Bugün tweet zaten atıldı")
         return
 
     said = check_site()
@@ -114,20 +135,10 @@ Kaynak:
 {URL}
 """
 
-        if state["streak"] >= 3:
-
-            tweet_text = f"""{date_str}
-
-Özgür Özel bugün Kürt dedi mi?
-
-⬜ SONUÇ: DEMEDİ
-
-⏱ {state["streak"]} gündür “Kürt” demiyor.
-"""
-
     send_tweet(tweet_text)
 
     state["last_tweet_date"] = today
+
     save_state(state)
 
 
