@@ -119,27 +119,18 @@ Kaynak:
 {URL}
 """
 
-    else:
+   else:
 
-        state["streak"] += 1
+    state["streak"] += 1
 
-        tweet_text = f"""{date_str}
+    tweet_text = f"""{date_str}
 
 Özgür Özel bugün Kürt dedi mi?
 
 ⬜ SONUÇ: DEMEDİ
 
 ⏱ {state["streak"]} gündür “Kürt” demiyor.
-
-Kaynak:
-{URL}
 """
-
-    send_tweet(tweet_text)
-
-    state["last_tweet_date"] = today
-
-    save_state(state)
 
 
 if __name__ == "__main__":
