@@ -1,14 +1,14 @@
 {
   "last_monthly_post": "",
-  "streak": 0,
+  "streak": 1,
   "daily": {
     "2026-03-05": {
       "t14": false,
       "t19": false,
-      "t2359": false,
-      "spoke_any": false,
+      "t2359": true,
+      "spoke_any": true,
       "kurt_any": false,
-      "last_url": null
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozelden-spanya-basbakani-pedro-sancheze-dayanisma-mesaji-tum-tehditlere-karsi-yaninizdayiz"
     }
   }
 }
