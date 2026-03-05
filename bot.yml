@@ -1,0 +1,46 @@
+name: twitterbot
+on:
+  schedule:
+    - cron: "0 11 * * *"   # 14:00 TRT
+    - cron: "0 16 * * *"   # 19:00 TRT
+    - cron: "59 20 * * *"  # 23:59 TRT
+  workflow_dispatch:
+    inputs:
+      force_date:
+        description: "Backfill date (YYYY-MM-DD)"
+        required: false
+        default: ""
+      force_slot:
+        description: "Slot override: t14 / t19 / t2359"
+        required: false
+        default: ""
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 tweepy pillow
+      - name: Run bot
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_KEY_SECRET: ${{ secrets.X_API_KEY_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+          FORCE_DATE: ${{ inputs.force_date }}
+          FORCE_SLOT: ${{ inputs.force_slot }}
+        run: python bot.py
+      - name: Commit state/history
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add state.json history.csv || true
+          git commit -m "Update bot state" || echo "No changes"
+          git push

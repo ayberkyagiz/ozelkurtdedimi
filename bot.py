@@ -7,6 +7,8 @@ from datetime import datetime, date, timedelta
 from zoneinfo import ZoneInfo
 from typing import Optional
 import tweepy
+import tempfile
+from generate_card import make_card
 
 BASE = "https://chp.org.tr"
 GUNDEM_URL = f"{BASE}/gundem/"
@@ -56,20 +58,43 @@ def x_client() -> tweepy.Client:
     )
 
 
-def tweet_with_reply(main_text: str) -> None:
+def x_api_v1() -> tweepy.API:
+    auth = tweepy.OAuth1UserHandler(
+        ensure_env("X_API_KEY"),
+        ensure_env("X_API_KEY_SECRET"),
+        ensure_env("X_ACCESS_TOKEN"),
+        ensure_env("X_ACCESS_TOKEN_SECRET"),
+    )
+    return tweepy.API(auth)
+
+
+def upload_card(sonuc: str, streak: int, tarih: str) -> Optional[str]:
+    """Kart oluştur, Twitter'a yükle, media_id döndür."""
+    try:
+        with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as f:
+            card_path = f.name
+        make_card(sonuc, streak, tarih, out=card_path)
+        api = x_api_v1()
+        media = api.media_upload(card_path)
+        os.unlink(card_path)
+        return str(media.media_id)
+    except Exception as e:
+        print("Card upload failed (non-fatal):", repr(e))
+        return None
+
+
+def tweet_with_reply(main_text: str, media_id: Optional[str] = None) -> None:
     client = x_client()
-    tw = client.create_tweet(text=main_text)
+    kwargs = {"text": main_text}
+    if media_id:
+        kwargs["media_ids"] = [media_id]
+    tw = client.create_tweet(**kwargs)
     tweet_id = tw.data["id"]
     reply = "🔁 Takip etmek için takip edin.\n\n📊 Son 30 gün istatistiği yakında paylaşılacak."
     try:
         client.create_tweet(text=reply, in_reply_to_tweet_id=tweet_id)
     except Exception as e:
-        # Reply başarısız olsa da ana tweet gitti; loglayıp devam et
         print("Reply tweet failed (non-fatal):", repr(e))
-
-
-def tweet_simple(text: str) -> None:
-    x_client().create_tweet(text=text)
 
 
 def detect_slot(now: datetime) -> tuple[str, str, bool]:
@@ -453,7 +478,8 @@ def main():
             f"📅 {date_str}"
         )
         print("Posting final (no speech) tweet…")
-        tweet_with_reply(main_text)
+        media_id = upload_card("konusmadi", 0, date_str)
+        tweet_with_reply(main_text, media_id=media_id)
 
         append_history(today, spoke=False, kurt=False, url=None)
 
@@ -474,7 +500,7 @@ def main():
         )
         append_history(today, spoke=True, kurt=True, url=daily["last_url"])
         print("Posting final (kurt said) tweet…")
-        tweet_with_reply(main_text)
+        tweet_with_reply(main_text)  # DEDİ: link var, kart yok
 
     else:
         state["streak"] = streak + 1
@@ -490,7 +516,8 @@ def main():
         append_history(today, spoke=True, kurt=False, url=daily["last_url"])
 
         print("Posting final (kurt NOT said) tweet…")
-        tweet_with_reply(main_text)
+        media_id = upload_card("demedi", st, date_str)
+        tweet_with_reply(main_text, media_id=media_id)
 
         if st == 3:
             print("Posting viral streak=3 tweet…")
