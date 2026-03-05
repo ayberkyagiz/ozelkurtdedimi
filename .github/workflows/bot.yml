@@ -2,10 +2,15 @@ name: twitterbot
 
 on:
   schedule:
-    # UTC saatleri: 14:00, 18:00, 22:00  (NY/Boston için yaklaşık 09:00, 13:00, 17:00)
-    - cron: "0 14 * * *"
-    - cron: "0 18 * * *"
-    - cron: "0 22 * * *"
+    # Türkiye saati: 14:00
+    - cron: "0 11 * * *"
+
+    # Türkiye saati: 19:00
+    - cron: "0 16 * * *"
+
+    # Türkiye saati: 23:59
+    - cron: "59 20 * * *"
+
   workflow_dispatch:
 
 permissions:
@@ -32,7 +37,7 @@ jobs:
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
         run: python bot.py
 
-      - name: Commit state/history (avoid duplicates + monthly stats)
+      - name: Commit state/history
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
