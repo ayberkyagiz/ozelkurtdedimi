@@ -1,0 +1,2 @@
+# ozelkurtdedimi
+Günlük otomatik twit
