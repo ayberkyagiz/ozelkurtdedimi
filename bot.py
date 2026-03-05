@@ -361,8 +361,8 @@ def main():
                 msg = (
                     f"📊 {prev_key} özeti (sadece konuştuğu günler)\n\n"
                     f"🗣 Konuştuğu gün sayısı: {s['spoken_days']}\n\n"
-                    f"\U0001f7e5 \"Kürt\" dediği konuşma günü: {kurt_yes_count}\\n"
-                    f"\u2b1c \"Kürt\" demediği konuşma günü: {kurt_no_count}\\n\\n"
+                    f'🟥 "Kürt" dediği konuşma günü: {s["kurt_yes"]}\n'
+                    f'⬜ "Kürt" demediği konuşma günü: {s["kurt_no"]}\n\n'
                     f"Kaynak: {GUNDEM_URL}"
                 )
                 # Önce state'i kaydet, sonra tweet at (crash koruması)
@@ -431,7 +431,7 @@ def main():
         main_text = (
             "Özgür Özel bugün Kürt dedi mi?\n\n"
             f"⬜ {slot_label} itibarıyla: HENÜZ DEMEDİ\n\n"
-            f"\u23f1 {streak} konuşma günüdür \"Kürt\" demiyor.\\n\\n"
+            f'⏱ {streak} konuşma günüdür "Kürt" demiyor.\n\n'
             f"📅 {date_str}"
         )
 
@@ -483,7 +483,7 @@ def main():
         main_text = (
             "Özgür Özel bugün Kürt dedi mi?\n\n"
             "⬜ SONUÇ: DEMEDİ\n\n"
-            f"\u23f1 {st} konuşma günüdür \"Kürt\" demiyor.\\n\\n"
+            f'⏱ {st} konuşma günüdür "Kürt" demiyor.\n\n'
             f"📅 {date_str}"
         )
 
