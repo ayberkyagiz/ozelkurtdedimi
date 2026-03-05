@@ -6,6 +6,18 @@ on:
     - cron: "0 16 * * *"   # 19:00 TRT
     - cron: "59 20 * * *"  # 23:59 TRT
   workflow_dispatch:
+    inputs:
+      force_date:
+        description: "Backfill date (YYYY-MM-DD)"
+        required: false
+        default: ""
+      force_slot:
+        description: "Optional: t14 / t19 / t2359"
+        required: false
+        default: ""
+
+permissions:
+  contents: write
 
 jobs:
   run:
@@ -28,6 +40,8 @@ jobs:
           X_API_KEY_SECRET: ${{ secrets.X_API_KEY_SECRET }}
           X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+          FORCE_DATE: ${{ inputs.force_date }}
+          FORCE_SLOT: ${{ inputs.force_slot }}
         run: python bot.py
 
       - name: Commit state/history
@@ -35,5 +49,5 @@ jobs:
           git config user.name "github-actions"
           git config user.email "github-actions@github.com"
           git add state.json history.csv || true
-          git commit -m "Update state/history" || echo "No changes"
-          git push || true
+          git commit -m "Update bot state" || echo "No changes"
+          git push
