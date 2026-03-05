@@ -229,15 +229,21 @@ def main():
 
     now = datetime.now(TZ)
 
-    # Backfill override: FORCE_DATE=YYYY-MM-DD
-    override = os.getenv("FORCE_DATE", "").strip()
-    if override:
-        try:
-            today = date.fromisoformat(override)
-        except Exception:
-            raise RuntimeError("FORCE_DATE must be YYYY-MM-DD")
-    else:
-        today = now.date()
+# Backfill override: FORCE_DATE=YYYY-MM-DD
+override = os.getenv("FORCE_DATE", "").strip()
+if override:
+    try:
+        today = date.fromisoformat(override)
+    except Exception:
+        raise RuntimeError("FORCE_DATE must be YYYY-MM-DD")
+else:
+    today = now.date()
+
+# ✅ 23:59 job'u bazen 00:xx'te çalışabiliyor → bir önceki güne yaz
+slot_key, slot_label, is_final = detect_slot(now)
+if (not override) and (slot_key == "t2359") and (now.hour == 0):
+    # 00:00–00:59 arası gelirse, bunu "dünün 23:59'u" say
+    today = today - timedelta(days=1)
 
     today_key = today.isoformat()
     date_str = tr_date_str(today)
