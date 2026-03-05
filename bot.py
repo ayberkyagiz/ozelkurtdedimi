@@ -213,7 +213,7 @@ def main():
         return
 
     # 4) Viral format: tek tweet
-    date_str = now.strftime("%d %B %Y").lstrip("0")
+    aylar = {     1:"Ocak",2:"Şubat",3:"Mart",4:"Nisan",5:"Mayıs",6:"Haziran",     7:"Temmuz",8:"Ağustos",9:"Eylül",10:"Ekim",11:"Kasım",12:"Aralık" }  date_str = f"{today.day} {aylar[today.month]} {today.year}"
 
     if spoke:
         result = "DEDİ" if kurt else "DEMEDİ"
