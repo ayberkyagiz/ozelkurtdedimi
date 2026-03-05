@@ -2,21 +2,14 @@ name: twitterbot
 
 on:
   schedule:
-    # Türkiye saati 14:00  -> UTC 11:00
-    - cron: "0 11 * * *"
-    # Türkiye saati 19:00  -> UTC 16:00
-    - cron: "0 16 * * *"
-    # Türkiye saati 23:59 -> UTC 20:59
-    - cron: "59 20 * * *"
+    - cron: "0 11 * * *"   # 14:00 TRT
+    - cron: "0 16 * * *"   # 19:00 TRT
+    - cron: "59 20 * * *"  # 23:59 TRT
   workflow_dispatch:
-
-permissions:
-  contents: write
 
 jobs:
   run:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -39,8 +32,8 @@ jobs:
 
       - name: Commit state/history
         run: |
-          git config user.name "github-actions[bot]"
-          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
           git add state.json history.csv || true
-          git commit -m "Update bot state" || echo "No changes"
+          git commit -m "Update state/history" || echo "No changes"
           git push || true
