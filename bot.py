@@ -69,7 +69,7 @@ def x_api_v1() -> tweepy.API:
 
 
 def upload_card(sonuc: str, streak: int, tarih: str) -> Optional[str]:
-    """Kart oluştur, Twitter'a yükle, media_id döndür."""
+    """Kart oluştur, Twitter'a yükle, media_id döndür. DEDİ için çağrılmaz."""
     try:
         with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as f:
             card_path = f.name
@@ -97,70 +97,33 @@ def tweet_with_reply(main_text: str, media_id: Optional[str] = None) -> None:
         print("Reply tweet failed (non-fatal):", repr(e))
 
 
-def detect_slot(now: datetime) -> tuple[str, str, bool]:
-    """
-    Cron job dakika kayması yaşayabilir; ±2 dakika tolerans eklendi.
-    Schedule: 14:00, 19:00, 23:59 TRT
-
-    FORCE_SLOT env var ile override edilebilir (backfill için).
-    Geçerli değerler: t14, t19, t2359
-    """
-    force = os.getenv("FORCE_SLOT", "").strip().lower()
-    if force == "t14":
-        return ("t14", "14:00", False)
-    if force == "t19":
-        return ("t19", "19:00", False)
-    if force == "t2359":
-        return ("t2359", "23:59", True)
-
-    h, m = now.hour, now.minute
-
-    if h == 14 and m <= 2:
-        return ("t14", "14:00", False)
-    if h == 19 and m <= 2:
-        return ("t19", "19:00", False)
-    # 23:57-23:59 aralığını da yakala
-    if h == 23 and m >= 57:
-        return ("t2359", "23:59", True)
-
-    # Beklenmedik saatte çalıştıysa (manuel tetik vs.) final slot'u döndür
-    return ("t2359", "23:59", True)
+def tweet_simple(text: str) -> None:
+    x_client().create_tweet(text=text)
 
 
 # -------------------------
 # State + cleanup
 # -------------------------
 def load_state() -> dict:
-    default = {
-        "daily": {},
-        # "streak" = SADECE konuştuğu günler içinde: kaç konuşma günüdür "Kürt" demiyor
-        "streak": 0,
-        # "YYYY-MM"
-        "last_monthly_post": ""
-    }
+    default = {"daily": {}, "streak": 0, "last_monthly_post": ""}
     if not os.path.exists(STATE_FILE):
         return default
-
     try:
         with open(STATE_FILE, "r", encoding="utf-8") as f:
             data = json.load(f)
     except Exception:
         return default
-
     for k, v in default.items():
         if k not in data:
             data[k] = v
-
     if not isinstance(data.get("daily"), dict):
         data["daily"] = {}
     try:
         data["streak"] = int(data.get("streak", 0))
     except Exception:
         data["streak"] = 0
-
     if not isinstance(data.get("last_monthly_post"), str):
         data["last_monthly_post"] = ""
-
     return data
 
 
@@ -170,31 +133,30 @@ def save_state(state: dict) -> None:
 
 
 def cleanup_daily(state: dict, keep_days: int = 30) -> None:
-    if "daily" not in state or not isinstance(state["daily"], dict):
+    if not isinstance(state.get("daily"), dict):
         state["daily"] = {}
         return
     cutoff = (datetime.now(TZ).date() - timedelta(days=keep_days)).isoformat()
-    to_delete = [k for k in state["daily"].keys() if k < cutoff]
-    for k in to_delete:
+    for k in [k for k in state["daily"] if k < cutoff]:
         del state["daily"][k]
 
 
 # -------------------------
-# History for monthly stats
+# History / monthly stats
 # -------------------------
 def ensure_history_header() -> None:
     if os.path.exists(HISTORY_FILE):
         return
     with open(HISTORY_FILE, "w", encoding="utf-8", newline="") as f:
-        w = csv.writer(f)
-        w.writerow(["date", "spoke", "kurt", "url"])  # spoke: Y/N, kurt: Y/N
+        csv.writer(f).writerow(["date", "spoke", "kurt", "url"])
 
 
 def append_history(d: date, spoke: bool, kurt: bool, url: Optional[str]) -> None:
     ensure_history_header()
     with open(HISTORY_FILE, "a", encoding="utf-8", newline="") as f:
-        w = csv.writer(f)
-        w.writerow([d.isoformat(), "Y" if spoke else "N", "Y" if kurt else "N", url or ""])
+        csv.writer(f).writerow([
+            d.isoformat(), "Y" if spoke else "N", "Y" if kurt else "N", url or ""
+        ])
 
 
 def previous_month(today: date) -> tuple[str, int, int]:
@@ -205,36 +167,24 @@ def previous_month(today: date) -> tuple[str, int, int]:
 
 
 def monthly_stats_spoken_only(year: int, month: int) -> dict:
-    """
-    SADECE konuştuğu günler içinde:
-    - kurt_yes: kaç konuşma gününde "Kürt" dedi
-    - kurt_no: kaç konuşma gününde "Kürt" demedi
-    """
     stats = {"spoken_days": 0, "kurt_yes": 0, "kurt_no": 0}
     if not os.path.exists(HISTORY_FILE):
         return stats
-
     with open(HISTORY_FILE, "r", encoding="utf-8") as f:
-        r = csv.DictReader(f)
-        for row in r:
+        for row in csv.DictReader(f):
             try:
                 d = datetime.fromisoformat(row["date"]).date()
             except Exception:
                 continue
             if d.year != year or d.month != month:
                 continue
-
-            spoke = (row.get("spoke") == "Y")
-            if not spoke:
+            if row.get("spoke") != "Y":
                 continue
-
             stats["spoken_days"] += 1
-            kurt = (row.get("kurt") == "Y")
-            if kurt:
+            if row.get("kurt") == "Y":
                 stats["kurt_yes"] += 1
             else:
                 stats["kurt_no"] += 1
-
     return stats
 
 
@@ -242,20 +192,12 @@ def monthly_stats_spoken_only(year: int, month: int) -> dict:
 # CHP parsing
 # -------------------------
 def parse_article_date(soup: BeautifulSoup) -> Optional[datetime]:
-    """
-    CHP makale sayfasındaki tarih bilgisini çeker.
-    <time datetime="..."> veya yaygın CSS class'larını dener.
-    Bulamazsa None döner.
-    """
-    # 1) <time datetime="..."> etiketi
     time_tag = soup.find("time", attrs={"datetime": True})
     if time_tag:
         try:
             return datetime.fromisoformat(time_tag["datetime"].replace("Z", "+00:00"))
         except Exception:
             pass
-
-    # 2) JSON-LD içindeki datePublished
     for script in soup.find_all("script", type="application/ld+json"):
         try:
             data = json.loads(script.string or "")
@@ -264,35 +206,22 @@ def parse_article_date(soup: BeautifulSoup) -> Optional[datetime]:
                 return datetime.fromisoformat(dp.replace("Z", "+00:00"))
         except Exception:
             pass
-
     return None
 
 
 def find_latest_ozel_link(gundem_html: str) -> Optional[str]:
-    """
-    Özgür Özel'e ait en YENİ haberin URL'ini döndürür.
-
-    Strateji:
-    1. Gündem sayfasındaki tüm 'Özgür Özel' linklerini topla.
-    2. Her linkin makale sayfasını çekip tarihini oku.
-    3. En yeni tarihe sahip olanı döndür.
-    4. Tarih okunamazsa DOM sırasındaki ilk link fallback olarak kullanılır.
-    """
     soup = BeautifulSoup(gundem_html, "html.parser")
-
     seen = set()
     candidates = []
     for a in soup.select("a[href]"):
         t = (a.get_text(" ", strip=True) or "").lower()
         if ("özgür özel" not in t) and ("ozgur ozel" not in t):
             continue
-
         href = a.get("href") or ""
         if href.startswith("/"):
             href = BASE + href
         if not href.startswith(BASE):
             continue
-
         u = normalize_url(href)
         if u and u not in seen:
             seen.add(u)
@@ -300,25 +229,19 @@ def find_latest_ozel_link(gundem_html: str) -> Optional[str]:
 
     if not candidates:
         return None
-
     if len(candidates) == 1:
         return candidates[0]
 
-    # Birden fazla aday varsa tarihe göre sırala
-    dated: list[tuple[Optional[datetime], str]] = []
+    dated = []
     for url in candidates:
         try:
-            html = fetch(url)
-            article_soup = BeautifulSoup(html, "html.parser")
-            dt = parse_article_date(article_soup)
+            dt = parse_article_date(BeautifulSoup(fetch(url), "html.parser"))
         except Exception as e:
             print(f"Date fetch failed for {url}: {repr(e)}")
             dt = None
         dated.append((dt, url))
 
-    # Tarihi olanları en yeniden eskiye sırala; tarihi olmayanlar sona düşer
     dated.sort(key=lambda x: (x[0] is not None, x[0] or datetime.min), reverse=True)
-
     best_dt, best_url = dated[0]
     print(f"Latest Özel article: {best_url} (date={best_dt})")
     return best_url
@@ -326,8 +249,11 @@ def find_latest_ozel_link(gundem_html: str) -> Optional[str]:
 
 def extract_article_text(article_html: str) -> str:
     soup = BeautifulSoup(article_html, "html.parser")
-    ps = [p.get_text(" ", strip=True) for p in soup.select("p") if p.get_text(strip=True)]
-    return "\n".join(ps).strip()
+    return "\n".join(
+        p.get_text(" ", strip=True)
+        for p in soup.select("p")
+        if p.get_text(strip=True)
+    ).strip()
 
 
 def contains_kurt(text: str) -> bool:
@@ -342,7 +268,7 @@ def main():
 
     now = datetime.now(TZ)
 
-    # Backfill override: FORCE_DATE=YYYY-MM-DD
+    # Backfill: FORCE_DATE=YYYY-MM-DD
     override = os.getenv("FORCE_DATE", "").strip()
     if override:
         try:
@@ -355,30 +281,24 @@ def main():
     today_key = today.isoformat()
     date_str = tr_date_str(today)
 
-    slot_key, slot_label, is_final = detect_slot(now)
-    print(f"NOW: {now.isoformat()} | SLOT: {slot_key} {slot_label} final={is_final} | TODAY_KEY: {today_key}")
+    print(f"NOW: {now.isoformat()} | TODAY_KEY: {today_key}")
 
     state = load_state()
     cleanup_daily(state, keep_days=30)
 
-    daily = state["daily"].get(
-        today_key,
-        {"t14": False, "t19": False, "t2359": False, "spoke_any": False, "kurt_any": False, "last_url": None}
-    )
+    daily = state["daily"].get(today_key, {"done": False, "spoke_any": False, "kurt_any": False, "last_url": None})
 
-    # Aynı slot tekrar çalıştıysa çık
-    if daily.get(slot_key) is True:
-        print("This slot already processed. Exiting.")
+    # Bugün zaten işlendiyse çık
+    if daily.get("done") is True:
+        print("Today already processed. Exiting.")
         state["daily"][today_key] = daily
         save_state(state)
         return
 
     # -------------------------
-    # Aylık istatistik (ayın 1'i, 09:00+): sadece konuştuğu günler içinde
-    # Not: Backfill koşusunda monthly spam olmasın diye sadece override yoksa çalıştırıyoruz.
-    # Race condition fix: state'i tweet'ten ÖNCE kaydet
+    # Aylık istatistik (ayın 1'i): backfill koşusunda atlanır
     # -------------------------
-    if (not override) and today.day == 1 and now.hour >= 9:
+    if (not override) and today.day == 1:
         prev_key, py, pm = previous_month(today)
         if state.get("last_monthly_post") != prev_key:
             s = monthly_stats_spoken_only(py, pm)
@@ -390,7 +310,6 @@ def main():
                     f'⬜ "Kürt" demediği konuşma günü: {s["kurt_no"]}\n\n'
                     f"Kaynak: {GUNDEM_URL}"
                 )
-                # Önce state'i kaydet, sonra tweet at (crash koruması)
                 state["last_monthly_post"] = prev_key
                 save_state(state)
                 print("Posting monthly stats…")
@@ -399,98 +318,41 @@ def main():
     # -------------------------
     # CHP kontrol
     # -------------------------
-    spoke_now = False
-    kurt_now = False
-    latest_url = None
-
     gundem_html = fetch(GUNDEM_URL)
     latest_url = find_latest_ozel_link(gundem_html)
+
+    spoke_now = False
+    kurt_now = False
 
     if latest_url:
         spoke_now = True
         try:
-            article_html = fetch(latest_url)
-            text = extract_article_text(article_html)
+            text = extract_article_text(fetch(latest_url))
             kurt_now = contains_kurt(text)
         except Exception as e:
             print("Article fetch/parse error:", repr(e))
-            spoke_now = True
-            kurt_now = False
 
     print(f"Detected: spoke_now={spoke_now}, kurt_now={kurt_now}, url={latest_url}")
 
-    if spoke_now:
-        daily["spoke_any"] = True
-    if kurt_now:
-        daily["kurt_any"] = True
-    if latest_url:
-        daily["last_url"] = latest_url
-
     streak = int(state.get("streak", 0))
 
-    # =========================
-    # ARA TWEET (14:00 / 19:00)
-    # =========================
-    if not is_final:
-        if daily["kurt_any"]:
-            print("Kurt already detected earlier today; skipping interim tweet.")
-            daily[slot_key] = True
-            state["daily"][today_key] = daily
-            save_state(state)
-            return
-
-        if not daily["spoke_any"]:
-            print("No speech detected yet; skipping interim tweet.")
-            daily[slot_key] = True
-            state["daily"][today_key] = daily
-            save_state(state)
-            return
-
-        if streak < 2:
-            print("Streak < 2; skipping interim tweet to reduce spam.")
-            daily[slot_key] = True
-            state["daily"][today_key] = daily
-            save_state(state)
-            return
-
-        main_text = (
-            "Özgür Özel bugün Kürt dedi mi?\n\n"
-            f"⬜ {slot_label} itibarıyla: HENÜZ DEMEDİ\n\n"
-            f'⏱ {streak} konuşma günüdür "Kürt" demiyor.\n\n'
-            f"📅 {date_str}"
-        )
-
-        print("Posting interim tweet…")
-        tweet_with_reply(main_text)
-
-        daily[slot_key] = True
-        state["daily"][today_key] = daily
-        save_state(state)
-        return
-
-    # =========================
-    # FINAL TWEET (23:59)
-    # =========================
-    if not daily["spoke_any"]:
+    # -------------------------
+    # Tweet
+    # -------------------------
+    if not spoke_now:
         main_text = (
             "Özgür Özel bugün Kürt dedi mi?\n\n"
             "⬜ SONUÇ: Bugün konuşmadı.\n\n"
             f"📅 {date_str}"
         )
-        print("Posting final (no speech) tweet…")
+        print("Posting (no speech) tweet…")
         media_id = upload_card("konusmadi", 0, date_str)
         tweet_with_reply(main_text, media_id=media_id)
-
         append_history(today, spoke=False, kurt=False, url=None)
 
-        daily[slot_key] = True
-        state["daily"][today_key] = daily
-        save_state(state)
-        return
-
-    if daily["kurt_any"]:
+    elif kurt_now:
         state["streak"] = 0
-        src = daily["last_url"] or GUNDEM_URL
+        src = latest_url or GUNDEM_URL
         main_text = (
             "Özgür Özel bugün Kürt dedi mi?\n\n"
             "🟥 SONUÇ: DEDİ\n\n"
@@ -498,32 +360,32 @@ def main():
             f"📅 {date_str}\n\n"
             f"🔗 Kaynak:\n{src}"
         )
-        append_history(today, spoke=True, kurt=True, url=daily["last_url"])
-        print("Posting final (kurt said) tweet…")
-        tweet_with_reply(main_text)  # DEDİ: link var, kart yok
+        print("Posting (kurt said) tweet…")
+        tweet_with_reply(main_text)  # DEDİ: kart yok, link var
+        append_history(today, spoke=True, kurt=True, url=latest_url)
 
     else:
         state["streak"] = streak + 1
         st = state["streak"]
-
         main_text = (
             "Özgür Özel bugün Kürt dedi mi?\n\n"
             "⬜ SONUÇ: DEMEDİ\n\n"
             f'⏱ {st} konuşma günüdür "Kürt" demiyor.\n\n'
             f"📅 {date_str}"
         )
-
-        append_history(today, spoke=True, kurt=False, url=daily["last_url"])
-
-        print("Posting final (kurt NOT said) tweet…")
+        print("Posting (kurt NOT said) tweet…")
         media_id = upload_card("demedi", st, date_str)
         tweet_with_reply(main_text, media_id=media_id)
+        append_history(today, spoke=True, kurt=False, url=latest_url)
 
         if st == 3:
-            print("Posting viral streak=3 tweet…")
-            tweet_simple("\u26a0\ufe0f Özgür Özel 3 konuşma günüdür konuşmalarında \"Kürt\" demiyor.")
+            print("Posting streak=3 alert…")
+            tweet_simple('⚠️ Özgür Özel 3 konuşma günüdür konuşmalarında "Kürt" demiyor.')
 
-    daily[slot_key] = True
+    daily["done"] = True
+    daily["spoke_any"] = spoke_now
+    daily["kurt_any"] = kurt_now
+    daily["last_url"] = latest_url
     state["daily"][today_key] = daily
     save_state(state)
     print("Done.")
