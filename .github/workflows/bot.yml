@@ -1,9 +1,7 @@
 name: twitterbot
 on:
   schedule:
-    - cron: "0 11 * * *"   # 14:00 TRT
-    - cron: "0 16 * * *"   # 19:00 TRT
-    - cron: "59 20 * * *"  # 23:59 TRT
+    - cron: "0 20 * * *"   # 23:00 TRT (UTC+3)
   workflow_dispatch:
     inputs:
       force_date:
@@ -11,7 +9,7 @@ on:
         required: false
         default: ""
       force_slot:
-        description: "Slot override: t14 / t19 / t2359"
+        description: "Slot override: t2300"
         required: false
         default: ""
 permissions:
