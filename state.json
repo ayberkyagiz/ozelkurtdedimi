@@ -1,6 +1,6 @@
 {
   "last_monthly_post": "",
-  "streak": 3,
+  "streak": 4,
   "daily": {
     "2026-03-05": {
       "done": true,
@@ -19,6 +19,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-03-08": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-bundan-sonra-her-seyin-yi-olmasi-cin-karari-anneler-verecek-artik-sira-ev-kadinlarinda"
     }
   }
 }
