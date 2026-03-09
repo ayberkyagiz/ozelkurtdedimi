@@ -1,6 +1,6 @@
 {
   "last_monthly_post": "",
-  "streak": 4,
+  "streak": 5,
   "daily": {
     "2026-03-05": {
       "done": true,
@@ -25,6 +25,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-bundan-sonra-her-seyin-yi-olmasi-cin-karari-anneler-verecek-artik-sira-ev-kadinlarinda"
+    },
+    "2026-03-09": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-bu-mahkemeyi-millete-gostermeye-cesareti-var-mi-erdoganin"
     }
   }
 }
