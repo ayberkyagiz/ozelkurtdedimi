@@ -249,10 +249,15 @@ def find_latest_ozel_link(gundem_html: str) -> Optional[str]:
 
 def extract_article_text(article_html: str) -> str:
     soup = BeautifulSoup(article_html, "html.parser")
-    return "\n".join(
-        p.get_text(" ", strip=True)
-        for p in soup.select("p")
-        if p.get_text(strip=True)
+    # Menü, nav, header, footer'ı kaldır
+    for tag in soup.select("nav, header, footer, .menu, script, style"):
+        tag.decompose()
+    # Makale içeriğini bul
+    article = soup.select_one("article, .article-content, .journal-detail, main")
+    if article:
+        return "\n".join(p.get_text(" ", strip=True) for p in article.select("p")).strip()
+    # Fallback
+    return "\n".join(p.get_text(" ", strip=True) for p in soup.select("p")).strip()
     ).strip()
 
 
