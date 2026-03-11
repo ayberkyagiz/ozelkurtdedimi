@@ -40,3 +40,18 @@
     }
   }
 }
+```
+
+**history.csv** — son satırı `Y,N` yap:
+```
+date,spoke,kurt,url
+2026-03-01,Y,N,
+2026-03-02,Y,N,
+2026-03-03,Y,N,
+2026-03-04,Y,Y,https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-bir-yandan-c-cepheyi-kuvvetlendirelim-bir-yandan-chplilere-balta-cekelim-yok-oyle-bir-bolluk
+2026-03-05,Y,N,https://chp.org.tr/haberler/chp-lideri-ozgur-ozelden-spanya-basbakani-pedro-sancheze-dayanisma-mesaji-tum-tehditlere-karsi-yaninizdayiz
+2026-03-06,Y,N,https://chp.org.tr/haberler/chp-lideri-ozgur-ozelden-spanya-basbakani-pedro-sancheze-dayanisma-mesaji-tum-tehditlere-karsi-yaninizdayiz
+2026-03-07,Y,N,
+2026-03-08,Y,N,https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-bundan-sonra-her-seyin-yi-olmasi-cin-karari-anneler-verecek-artik-sira-ev-kadinlarinda
+2026-03-09,Y,N,https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-bu-mahkemeyi-millete-gostermeye-cesareti-var-mi-erdoganin
+2026-03-10,Y,N,https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-ekrem-mamoglu-buradan-cikacak-cumhurbaskani-olacaktir-ki-sene-sonra-bunu-yayinlarsiniz
