@@ -1,6 +1,6 @@
 {
   "last_monthly_post": "",
-  "streak": 0,
+  "streak": 6,
   "daily": {
     "2026-03-05": {
       "done": true,
@@ -35,7 +35,7 @@
     "2026-03-10": {
       "done": true,
       "spoke_any": true,
-      "kurt_any": true,
+      "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-ekrem-mamoglu-buradan-cikacak-cumhurbaskani-olacaktir-ki-sene-sonra-bunu-yayinlarsiniz"
     }
   }
