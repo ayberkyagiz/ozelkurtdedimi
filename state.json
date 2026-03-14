@@ -1,6 +1,6 @@
 {
   "last_monthly_post": "",
-  "streak": 2,
+  "streak": 3,
   "daily": {
     "2026-03-05": {
       "done": true,
@@ -55,6 +55,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-ozgur-ozelden-prof-dr-lber-ortayli-cin-bassagligi-mesaji"
+    },
+    "2026-03-14": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-bu-kadar-korkuyorsaniz-ev-hapsi-verin-zulmu-bitirin-biz-ekrem-baskani-cumhurbaskani-yapacagiz"
     }
   }
 }
