@@ -1,6 +1,6 @@
 {
   "last_monthly_post": "",
-  "streak": 3,
+  "streak": 4,
   "daily": {
     "2026-03-05": {
       "done": true,
@@ -61,6 +61,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-bu-kadar-korkuyorsaniz-ev-hapsi-verin-zulmu-bitirin-biz-ekrem-baskani-cumhurbaskani-yapacagiz"
+    },
+    "2026-03-15": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-ferdi-ve-gulsahin-biraktigi-hizmetleri-kaldigi-yerden-devam-ettirmek-gerekiyor"
     }
   }
 }
