@@ -1,6 +1,6 @@
 {
   "last_monthly_post": "",
-  "streak": 4,
+  "streak": 5,
   "daily": {
     "2026-03-05": {
       "done": true,
@@ -67,6 +67,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-ferdi-ve-gulsahin-biraktigi-hizmetleri-kaldigi-yerden-devam-ettirmek-gerekiyor"
+    },
+    "2026-03-16": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-ktidarimizin-lk-ayinda-sehit-aileleri-ve-gaziler-cin-18-kanunu-meclisten-gecirecegiz"
     }
   }
 }
