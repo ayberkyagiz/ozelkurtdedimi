@@ -1,6 +1,6 @@
 {
   "last_monthly_post": "",
-  "streak": 0,
+  "streak": 1,
   "daily": {
     "2026-03-05": {
       "done": true,
@@ -79,6 +79,12 @@
       "spoke_any": true,
       "kurt_any": true,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-hakkindaki-7-basvurumuz-hskda-bekliyordu-bakan-yapip-basina-getirdiler-kadi-davaci-oldu"
+    },
+    "2026-03-18": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-sehit-aileleri-ve-gazilerimizin-maas-yetersizliginden-stihdam-sorunundan-bahsetmek-utanc-verici"
     }
   }
 }
