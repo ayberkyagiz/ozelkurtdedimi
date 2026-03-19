@@ -1,6 +1,6 @@
 {
   "last_monthly_post": "",
-  "streak": 0,
+  "streak": 1,
   "daily": {
     "2026-03-05": {
       "done": true,
@@ -85,6 +85,12 @@
       "spoke_any": true,
       "kurt_any": true,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-4-tapum-var-diyorsun-aciklamadigin-konutun-vergisini-yatirmis-digerinde-taksitleri-odemissin"
+    },
+    "2026-03-19": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-turkiyenin-yarinlarinda-birlikte-olacagiz"
     }
   }
 }
