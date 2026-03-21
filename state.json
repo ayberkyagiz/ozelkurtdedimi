@@ -1,6 +1,6 @@
 {
   "last_monthly_post": "",
-  "streak": 2,
+  "streak": 3,
   "daily": {
     "2026-03-05": {
       "done": true,
@@ -97,6 +97,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-manisada-bayram-namazinin-ardindan-kabristanlari-ziyaret-etti"
+    },
+    "2026-03-21": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozelden-lkokul-ogretmeni-gulseren-hasyamanlara-ziyaret"
     }
   }
 }
