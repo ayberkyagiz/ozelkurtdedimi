@@ -1,6 +1,6 @@
 {
   "last_monthly_post": "",
-  "streak": 0,
+  "streak": 1,
   "daily": {
     "2026-03-05": {
       "done": true,
@@ -109,6 +109,12 @@
       "spoke_any": true,
       "kurt_any": true,
       "last_url": "https://www.rudaw.net/turkish/middleeast/turkey/2103202612"
+    },
+    "2026-03-23": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-sehit-aselsan-teknisyenleri-kahraman-ve-canin-cenaze-torenine-katildi"
     }
   }
 }
