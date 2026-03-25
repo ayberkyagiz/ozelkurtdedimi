@@ -1,6 +1,6 @@
 {
   "last_monthly_post": "",
-  "streak": 2,
+  "streak": 3,
   "daily": {
     "2026-03-05": {
       "done": true,
@@ -121,6 +121,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-tapu-sicil-kayitlarini-avukat-steyecek-hakim-getirecek-millet-kim-yalan-soyluyor-gorecek"
+    },
+    "2026-03-25": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-ekonomimiz-savasa-hazirliksiz-yakalandi-akaryakitta-kdv-onlemi-alinmali-ciftci-desteklenmelidir"
     }
   }
 }
