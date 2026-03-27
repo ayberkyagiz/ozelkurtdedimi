@@ -1,6 +1,6 @@
 {
   "last_monthly_post": "",
-  "streak": 4,
+  "streak": 5,
   "daily": {
     "2026-03-05": {
       "done": true,
@@ -133,6 +133,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-dijital-dunya-ve-guvenlik-toplantisina-baskanlik-etti"
+    },
+    "2026-03-27": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-150-ulkeden-250-gence-seslendi"
     }
   }
 }
