@@ -1,6 +1,6 @@
 {
   "last_monthly_post": "",
-  "streak": 0,
+  "streak": 1,
   "daily": {
     "2026-03-05": {
       "done": true,
@@ -151,6 +151,12 @@
       "spoke_any": true,
       "kurt_any": true,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-susanlara-soruyorum-sozunuzu-sazinizi-duvara-mi-asacaksiniz"
+    },
+    "2026-03-30": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-erdogan-madem-akin-gurleki-susturdun-turpun-buyugu-olarak-sen-cevapla"
     }
   }
 }
