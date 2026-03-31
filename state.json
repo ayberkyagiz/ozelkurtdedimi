@@ -1,6 +1,6 @@
 {
   "last_monthly_post": "",
-  "streak": 1,
+  "streak": 2,
   "daily": {
     "2026-03-05": {
       "done": true,
@@ -157,6 +157,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-erdogan-madem-akin-gurleki-susturdun-turpun-buyugu-olarak-sen-cevapla"
+    },
+    "2026-03-31": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-chpde-yangin-cikiyor-diye-bakanlara-soyluyorum-komsuyuz-bizim-ev-yanarsa-apartman-yanar"
     }
   }
 }
