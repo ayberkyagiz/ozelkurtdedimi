@@ -1,6 +1,6 @@
 {
-  "last_monthly_post": "",
-  "streak": 2,
+  "last_monthly_post": "2026-03",
+  "streak": 3,
   "daily": {
     "2026-03-05": {
       "done": true,
@@ -163,6 +163,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-chpde-yangin-cikiyor-diye-bakanlara-soyluyorum-komsuyuz-bizim-ev-yanarsa-apartman-yanar"
+    },
+    "2026-04-01": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-dunya-kupasina-katilmaya-hak-kazanan-a-milli-takimini-tebrik-etti"
     }
   }
 }
