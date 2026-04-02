@@ -1,6 +1,6 @@
 {
   "last_monthly_post": "2026-03",
-  "streak": 3,
+  "streak": 4,
   "daily": {
     "2026-03-05": {
       "done": true,
@@ -169,6 +169,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-dunya-kupasina-katilmaya-hak-kazanan-a-milli-takimini-tebrik-etti"
+    },
+    "2026-04-02": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-tokye-120-bin-sosyal-konut-hedefi-koyacagiz-kirasi-hane-gelirinin-yuzde-25ini-gecmeyecek"
     }
   }
 }
