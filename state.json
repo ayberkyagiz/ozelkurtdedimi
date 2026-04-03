@@ -1,6 +1,6 @@
 {
   "last_monthly_post": "2026-03",
-  "streak": 4,
+  "streak": 5,
   "daily": {
     "2026-03-05": {
       "done": true,
@@ -175,6 +175,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-tokye-120-bin-sosyal-konut-hedefi-koyacagiz-kirasi-hane-gelirinin-yuzde-25ini-gecmeyecek"
+    },
+    "2026-04-03": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-500-bursaliyi-dolandiranin-fadesiyle-yapilacak-tutuklama-haksizliktir-siyasi-yankesiciliktir"
     }
   }
 }
