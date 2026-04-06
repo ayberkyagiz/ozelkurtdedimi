@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-03",
-  "streak": 1,
+  "streak": 2,
   "daily": {
-    "2026-03-06": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozelden-spanya-basbakani-pedro-sancheze-dayanisma-mesaji-tum-tehditlere-karsi-yaninizdayiz"
-    },
     "2026-03-07": {
       "done": true,
       "spoke_any": true,
@@ -187,6 +181,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-ozgur-ozel-senol-aslanoglu-tunc-soyer-ve-heval-savasi-ziyaret-etti"
+    },
+    "2026-04-06": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-ozgur-ozel-tbmmnin-bir-an-once-bosalan-sandalyeler-cin-ara-secim-karari-almasi-zorunluluktur"
     }
   }
 }
