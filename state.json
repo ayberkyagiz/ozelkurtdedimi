@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-03",
-  "streak": 2,
+  "streak": 0,
   "daily": {
-    "2026-03-07": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-03-08": {
       "done": true,
       "spoke_any": true,
@@ -187,6 +181,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-ozgur-ozel-tbmmnin-bir-an-once-bosalan-sandalyeler-cin-ara-secim-karari-almasi-zorunluluktur"
+    },
+    "2026-04-07": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": true,
+      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-ya-ara-secim-yapilacak-ya-da-korkaklar-tarihe-yazilacak"
     }
   }
 }
