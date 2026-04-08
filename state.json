@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-03",
-  "streak": 0,
+  "streak": 1,
   "daily": {
-    "2026-03-08": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-bundan-sonra-her-seyin-yi-olmasi-cin-karari-anneler-verecek-artik-sira-ev-kadinlarinda"
-    },
     "2026-03-09": {
       "done": true,
       "spoke_any": true,
@@ -187,6 +181,12 @@
       "spoke_any": true,
       "kurt_any": true,
       "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-ya-ara-secim-yapilacak-ya-da-korkaklar-tarihe-yazilacak"
+    },
+    "2026-04-08": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozelden-lucescu-cin-taziye-mektubu"
     }
   }
 }
