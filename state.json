@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-03",
-  "streak": 1,
+  "streak": 2,
   "daily": {
-    "2026-03-09": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-bu-mahkemeyi-millete-gostermeye-cesareti-var-mi-erdoganin"
-    },
     "2026-03-10": {
       "done": true,
       "spoke_any": true,
@@ -187,6 +181,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozelden-lucescu-cin-taziye-mektubu"
+    },
+    "2026-04-09": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozelden-kucuk-ailesine-bassagligi-telefonu"
     }
   }
 }
