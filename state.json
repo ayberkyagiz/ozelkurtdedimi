@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-03",
-  "streak": 2,
+  "streak": 3,
   "daily": {
-    "2026-03-10": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-ekrem-mamoglu-buradan-cikacak-cumhurbaskani-olacaktir-ki-sene-sonra-bunu-yayinlarsiniz"
-    },
     "2026-03-11": {
       "done": true,
       "spoke_any": true,
@@ -187,6 +181,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozelden-kucuk-ailesine-bassagligi-telefonu"
+    },
+    "2026-04-10": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-ozgur-ozel-kuzey-makedonyadan-thp-heyeti-ile-bir-araya-geldi"
     }
   }
 }
