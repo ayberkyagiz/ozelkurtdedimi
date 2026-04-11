@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-03",
-  "streak": 3,
+  "streak": 0,
   "daily": {
-    "2026-03-11": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": true,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-meydanda-boyle-ofke-daha-once-gormedim-erdogan-stedigini-yap-bu-ofke-seni-goturuyor"
-    },
     "2026-03-12": {
       "done": true,
       "spoke_any": true,
@@ -187,6 +181,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-ozgur-ozel-kuzey-makedonyadan-thp-heyeti-ile-bir-araya-geldi"
+    },
+    "2026-04-11": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": true,
+      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-emekliler-calisanlar-cin-ara-zam-demokrasi-cin-ara-secim-sarttir"
     }
   }
 }
