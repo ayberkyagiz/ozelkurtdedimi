@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-03",
-  "streak": 0,
+  "streak": 1,
   "daily": {
-    "2026-03-12": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-ozgur-ozel-eski-tbmm-baskani-bulent-arinci-ziyaret-etti"
-    },
     "2026-03-13": {
       "done": true,
       "spoke_any": true,
@@ -187,6 +181,12 @@
       "spoke_any": true,
       "kurt_any": true,
       "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-emekliler-calisanlar-cin-ara-zam-demokrasi-cin-ara-secim-sarttir"
+    },
+    "2026-04-12": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-ahmet-telliyi-ziyaret-etti"
     }
   }
 }
