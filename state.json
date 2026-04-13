@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-03",
-  "streak": 1,
+  "streak": 2,
   "daily": {
-    "2026-03-13": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-ozgur-ozelden-prof-dr-lber-ortayli-cin-bassagligi-mesaji"
-    },
     "2026-03-14": {
       "done": true,
       "spoke_any": true,
@@ -187,6 +181,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-ahmet-telliyi-ziyaret-etti"
+    },
+    "2026-04-13": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-sandigi-namusu-gibi-bilen-nsanlara-bir-kere-oy-verin-sonra-5-yil-kenara-cekilin-diyemezsiniz"
     }
   }
 }
