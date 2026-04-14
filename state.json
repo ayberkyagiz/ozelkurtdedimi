@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-03",
-  "streak": 2,
+  "streak": 3,
   "daily": {
-    "2026-03-14": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-bu-kadar-korkuyorsaniz-ev-hapsi-verin-zulmu-bitirin-biz-ekrem-baskani-cumhurbaskani-yapacagiz"
-    },
     "2026-03-15": {
       "done": true,
       "spoke_any": true,
@@ -187,6 +181,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-sandigi-namusu-gibi-bilen-nsanlara-bir-kere-oy-verin-sonra-5-yil-kenara-cekilin-diyemezsiniz"
+    },
+    "2026-04-14": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-ozgur-ozel-l-baskanlari-ile-bir-araya-geldi"
     }
   }
 }
