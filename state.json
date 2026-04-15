@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-03",
-  "streak": 3,
+  "streak": 4,
   "daily": {
-    "2026-03-15": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-ferdi-ve-gulsahin-biraktigi-hizmetleri-kaldigi-yerden-devam-ettirmek-gerekiyor"
-    },
     "2026-03-16": {
       "done": true,
       "spoke_any": true,
@@ -187,6 +181,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-ozgur-ozel-l-baskanlari-ile-bir-araya-geldi"
+    },
+    "2026-04-15": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-kahramanmaras-valisi-ile-gorustu"
     }
   }
 }
