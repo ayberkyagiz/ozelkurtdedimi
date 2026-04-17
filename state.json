@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-03",
-  "streak": 5,
+  "streak": 6,
   "daily": {
-    "2026-03-17": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": true,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-hakkindaki-7-basvurumuz-hskda-bekliyordu-bakan-yapip-basina-getirdiler-kadi-davaci-oldu"
-    },
     "2026-03-18": {
       "done": true,
       "spoke_any": true,
@@ -187,6 +181,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-kahramanmaras-valisi-ile-gorustu"
+    },
+    "2026-04-17": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-barselonada-junya-ogwa-elly-schlein-ve-jesse-klaver-ile-bir-araya-geldi"
     }
   }
 }
