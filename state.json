@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-03",
-  "streak": 6,
+  "streak": 7,
   "daily": {
-    "2026-03-18": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": true,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-4-tapum-var-diyorsun-aciklamadigin-konutun-vergisini-yatirmis-digerinde-taksitleri-odemissin"
-    },
     "2026-03-19": {
       "done": true,
       "spoke_any": true,
@@ -187,6 +181,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-barselonada-junya-ogwa-elly-schlein-ve-jesse-klaver-ile-bir-araya-geldi"
+    },
+    "2026-04-18": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-bir-yili-askin-suredir-meydanlarda-mucadele-veriyoruz-darbeye-karsi-halkin-radesini-savunuyoruz"
     }
   }
 }
