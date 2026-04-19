@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-03",
-  "streak": 7,
+  "streak": 8,
   "daily": {
-    "2026-03-19": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-turkiyenin-yarinlarinda-birlikte-olacagiz"
-    },
     "2026-03-20": {
       "done": true,
       "spoke_any": true,
@@ -187,6 +181,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-bir-yili-askin-suredir-meydanlarda-mucadele-veriyoruz-darbeye-karsi-halkin-radesini-savunuyoruz"
+    },
+    "2026-04-19": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-barcelonada-duzenlenen-kuresel-lerici-seferberlik-toplantisina-katildi"
     }
   }
 }
