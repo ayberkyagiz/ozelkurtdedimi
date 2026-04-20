@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-03",
-  "streak": 8,
+  "streak": 0,
   "daily": {
-    "2026-03-20": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-manisada-bayram-namazinin-ardindan-kabristanlari-ziyaret-etti"
-    },
     "2026-03-21": {
       "done": true,
       "spoke_any": true,
@@ -187,6 +181,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-barcelonada-duzenlenen-kuresel-lerici-seferberlik-toplantisina-katildi"
+    },
+    "2026-04-20": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": true,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-yapilan-operasyonlar-cok-kotu-bir-yolu-acmaktir-aklinizi-basiniza-toplayin"
     }
   }
 }
