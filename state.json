@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-03",
-  "streak": 0,
+  "streak": 1,
   "daily": {
-    "2026-03-21": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozelden-lkokul-ogretmeni-gulseren-hasyamanlara-ziyaret"
-    },
     "2026-03-22": {
       "done": true,
       "spoke_any": true,
@@ -187,6 +181,12 @@
       "spoke_any": true,
       "kurt_any": true,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-yapilan-operasyonlar-cok-kotu-bir-yolu-acmaktir-aklinizi-basiniza-toplayin"
+    },
+    "2026-04-21": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-ozgur-ozel-milli-guresci-riza-kayaalpi-kutladi"
     }
   }
 }
