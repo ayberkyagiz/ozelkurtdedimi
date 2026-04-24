@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-03",
-  "streak": 3,
+  "streak": 4,
   "daily": {
-    "2026-03-24": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-tapu-sicil-kayitlarini-avukat-steyecek-hakim-getirecek-millet-kim-yalan-soyluyor-gorecek"
-    },
     "2026-03-25": {
       "done": true,
       "spoke_any": true,
@@ -187,6 +181,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-23-nisan-ulusal-egemenlik-ve-cocuk-bayrami-resepsiyonuna-katildi"
+    },
+    "2026-04-24": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-ozgur-ozel-ak-parti-emaneti-verirse-verir-vermezse-millet-bursada-sandikta-gosterir"
     }
   }
 }
