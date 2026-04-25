@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-03",
-  "streak": 4,
+  "streak": 5,
   "daily": {
-    "2026-03-25": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-ekonomimiz-savasa-hazirliksiz-yakalandi-akaryakitta-kdv-onlemi-alinmali-ciftci-desteklenmelidir"
-    },
     "2026-03-26": {
       "done": true,
       "spoke_any": true,
@@ -187,6 +181,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-ozgur-ozel-ak-parti-emaneti-verirse-verir-vermezse-millet-bursada-sandikta-gosterir"
+    },
+    "2026-04-25": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-ftiralari-atanlara-mujdelerim-ki-once-secim-sandigi-sonra-da-sizin-ceyiz-sandiginiz-acilacak"
     }
   }
 }
