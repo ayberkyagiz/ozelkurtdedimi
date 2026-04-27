@@ -1,19 +1,7 @@
 {
   "last_monthly_post": "2026-03",
-  "streak": 6,
+  "streak": 7,
   "daily": {
-    "2026-03-27": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-150-ulkeden-250-gence-seslendi"
-    },
-    "2026-03-28": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": true,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-darbeye-kalkisanlar-milleti-nandiramadi-davalarin-siyasi-olduguna-nananlarin-orani-yuzde-60"
-    },
     "2026-03-29": {
       "done": true,
       "spoke_any": true,
@@ -187,6 +175,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-ozgur-ozel-dusman-hukuku-uygulayanlarla-oturup-konusmam-once-o-baltani-yakacaksin"
+    },
+    "2026-04-28": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-parti-meclisi-toplantisina-baskanlik-etti"
     }
   }
 }
