@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-03",
-  "streak": 0,
+  "streak": 1,
   "daily": {
-    "2026-03-30": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-erdogan-madem-akin-gurleki-susturdun-turpun-buyugu-olarak-sen-cevapla"
-    },
     "2026-03-31": {
       "done": true,
       "spoke_any": true,
@@ -181,6 +175,12 @@
       "spoke_any": true,
       "kurt_any": true,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-14-yildir-taksimden-korkanlara-nat-1-mayis-bayram-gibi-bayram-olacak-ve-taksim-serbest-olacak"
+    },
+    "2026-04-30": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-erdogan-bizimle-bas-edemiyor-akin-gurlek-uzerinden-ftira-attirmaya-calisiyor"
     }
   }
 }
