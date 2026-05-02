@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-04",
-  "streak": 2,
+  "streak": 3,
   "daily": {
-    "2026-04-01": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-dunya-kupasina-katilmaya-hak-kazanan-a-milli-takimini-tebrik-etti"
-    },
     "2026-04-02": {
       "done": true,
       "spoke_any": true,
@@ -181,6 +175,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-ozgur-ozel-gazeteci-yazar-rahmi-yildirimin-cenaze-torenine-katildi"
+    },
+    "2026-05-02": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-kanli-1-mayisin-50nci-yilinda-taksimde-olacagiz"
     }
   }
 }
