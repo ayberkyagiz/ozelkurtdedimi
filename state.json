@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-04",
-  "streak": 3,
+  "streak": 4,
   "daily": {
-    "2026-04-02": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-tokye-120-bin-sosyal-konut-hedefi-koyacagiz-kirasi-hane-gelirinin-yuzde-25ini-gecmeyecek"
-    },
     "2026-04-03": {
       "done": true,
       "spoke_any": true,
@@ -181,6 +175,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-kanli-1-mayisin-50nci-yilinda-taksimde-olacagiz"
+    },
+    "2026-05-03": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-ozgur-ozel-tarihin-en-uzun-ve-en-kalabalik-secim-kampanyasindayiz-tum-vatan-sathina-yayiliyoruz"
     }
   }
 }
