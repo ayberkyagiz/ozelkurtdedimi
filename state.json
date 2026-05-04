@@ -1,19 +1,7 @@
 {
   "last_monthly_post": "2026-04",
-  "streak": 4,
+  "streak": 5,
   "daily": {
-    "2026-04-03": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-500-bursaliyi-dolandiranin-fadesiyle-yapilacak-tutuklama-haksizliktir-siyasi-yankesiciliktir"
-    },
-    "2026-04-04": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": true,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-dunyanin-baska-yerinde-kibrit-copum-yok-erdogan-ya-da-evlatlarinin-abdde-mulku-var-mi-yok-mu"
-    },
     "2026-04-05": {
       "done": true,
       "spoke_any": true,
@@ -181,6 +169,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-ozgur-ozel-tarihin-en-uzun-ve-en-kalabalik-secim-kampanyasindayiz-tum-vatan-sathina-yayiliyoruz"
+    },
+    "2026-05-05": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-ktidar-olmak-ve-adaleti-getirmek-cin-savunmadan-hucuma-cikiyoruz"
     }
   }
 }
