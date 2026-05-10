@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-04",
-  "streak": 2,
+  "streak": 3,
   "daily": {
-    "2026-04-09": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozelden-kucuk-ailesine-bassagligi-telefonu"
-    },
     "2026-04-10": {
       "done": true,
       "spoke_any": true,
@@ -175,6 +169,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-baris-annelerini-kabul-etti"
+    },
+    "2026-05-10": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozelden-anneler-gunu-ziyaretleri"
     }
   }
 }
