@@ -1,19 +1,7 @@
 {
   "last_monthly_post": "2026-04",
-  "streak": 3,
+  "streak": 4,
   "daily": {
-    "2026-04-10": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-ozgur-ozel-kuzey-makedonyadan-thp-heyeti-ile-bir-araya-geldi"
-    },
-    "2026-04-11": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": true,
-      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-emekliler-calisanlar-cin-ara-zam-demokrasi-cin-ara-secim-sarttir"
-    },
     "2026-04-12": {
       "done": true,
       "spoke_any": true,
@@ -171,6 +159,12 @@
       "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-baris-annelerini-kabul-etti"
     },
     "2026-05-10": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozelden-anneler-gunu-ziyaretleri"
+    },
+    "2026-05-12": {
       "done": true,
       "spoke_any": true,
       "kurt_any": false,
