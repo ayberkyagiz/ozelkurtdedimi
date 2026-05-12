@@ -81,7 +81,13 @@ def tweet_with_media(text: str, media_path: str) -> None:
 # State + cleanup
 # -------------------------
 def load_state() -> dict:
-    default = {"daily": {}, "streak": 0, "streak_result": "", "last_monthly_post": ""}
+    default = {
+        "daily": {},
+        "streak": 0,
+        "streak_result": "",
+        "last_monthly_post": "",
+        "last_weekly_post": "",
+    }
     if not os.path.exists(STATE_FILE):
         return default
     try:
@@ -100,6 +106,8 @@ def load_state() -> dict:
         data["streak"] = 0
     if not isinstance(data.get("last_monthly_post"), str):
         data["last_monthly_post"] = ""
+    if not isinstance(data.get("last_weekly_post"), str):
+        data["last_weekly_post"] = ""
     if data.get("streak_result") not in ("dedi", "demedi"):
         data["streak_result"] = ""
     return data
@@ -159,6 +167,28 @@ def monthly_stats_spoken_only(year: int, month: int) -> dict:
     return stats
 
 
+def stats_between(start: date, end: date) -> dict:
+    stats = {"spoken_days": 0, "kurt_yes": 0, "kurt_no": 0}
+    if not os.path.exists(HISTORY_FILE):
+        return stats
+    with open(HISTORY_FILE, "r", encoding="utf-8") as f:
+        for row in csv.DictReader(f):
+            try:
+                d = datetime.fromisoformat(row["date"]).date()
+            except Exception:
+                continue
+            if d < start or d > end:
+                continue
+            if row.get("spoke") != "Y":
+                continue
+            stats["spoken_days"] += 1
+            if row.get("kurt") == "Y":
+                stats["kurt_yes"] += 1
+            else:
+                stats["kurt_no"] += 1
+    return stats
+
+
 def previous_month(today: date) -> tuple[str, int, int]:
     y, m = today.year, today.month
     if m == 1:
@@ -168,7 +198,18 @@ def previous_month(today: date) -> tuple[str, int, int]:
 
 def monthly_stats_text(key: str, stats: dict) -> str:
     return (
-        f"{key} ayı istatistikleri:\n\n"
+        f'Kasım 2023\'ten bu yana aylık "Kürt" kelimesi kullanım oranı grafiği güncellendi.\n\n'
+        f"{key} ayı özeti:\n\n"
+        f"Konuştuğu gün sayısı: {stats['spoken_days']}\n"
+        f'"Kürt" dediği konuşma günü: {stats["kurt_yes"]}\n'
+        f'"Kürt" demediği konuşma günü: {stats["kurt_no"]}\n\n'
+        f"Kaynak: {GUNDEM_URL}"
+    )
+
+
+def weekly_stats_text(start: date, end: date, stats: dict) -> str:
+    return (
+        f"Haftalık özet ({tr_date_str(start)} - {tr_date_str(end)}):\n\n"
         f"Konuştuğu gün sayısı: {stats['spoken_days']}\n"
         f'"Kürt" dediği konuşma günü: {stats["kurt_yes"]}\n'
         f'"Kürt" demediği konuşma günü: {stats["kurt_no"]}\n\n'
@@ -210,6 +251,22 @@ def post_monthly_stats_if_due(state: dict, today: date, override: str) -> None:
             os.unlink(report_path)
         except OSError:
             pass
+
+
+def post_weekly_stats_if_due(state: dict, today: date, override: str) -> None:
+    if override or today.weekday() != 6:
+        return
+    week_start = today - timedelta(days=6)
+    week_key = today.isoformat()
+    if state.get("last_weekly_post") == week_key:
+        return
+    stats = stats_between(week_start, today)
+    if stats["spoken_days"] <= 0:
+        return
+    state["last_weekly_post"] = week_key
+    save_state(state)
+    print("Posting weekly stats...")
+    tweet_simple(weekly_stats_text(week_start, today, stats))
 
 
 # -------------------------
@@ -330,6 +387,7 @@ def main():
         state["daily"][today_key] = daily
         save_state(state)
         post_monthly_stats_if_due(state, today, override)
+        post_weekly_stats_if_due(state, today, override)
         return
 
     # -------------------------
@@ -392,6 +450,7 @@ def main():
     state["daily"][today_key] = daily
     save_state(state)
     post_monthly_stats_if_due(state, today, override)
+    post_weekly_stats_if_due(state, today, override)
 
     print("Done.")
 
