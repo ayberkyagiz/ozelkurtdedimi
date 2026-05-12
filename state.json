@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-04",
-  "streak": 4,
+  "streak": 0,
   "daily": {
-    "2026-04-12": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-ahmet-telliyi-ziyaret-etti"
-    },
     "2026-04-13": {
       "done": true,
       "spoke_any": true,
@@ -169,6 +163,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozelden-anneler-gunu-ziyaretleri"
+    },
+    "2026-05-13": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": true,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-ben-kacmam-ugrasani-pisman-ederim-diyen-bir-hadsiz-basinizin-belasidir"
     }
   }
 }
