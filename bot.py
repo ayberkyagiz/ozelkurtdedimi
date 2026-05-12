@@ -5,10 +5,10 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime, date, timedelta
 from zoneinfo import ZoneInfo
-from typing import Optional
 import tweepy
 import tempfile
-from generate_card import make_card
+
+from generate_monthly_report import make_monthly_report
 
 BASE = "https://chp.org.tr"
 GUNDEM_URL = f"{BASE}/gundem/"
@@ -68,44 +68,20 @@ def x_api_v1() -> tweepy.API:
     return tweepy.API(auth)
 
 
-def upload_card(sonuc: str, streak: int, tarih: str) -> Optional[str]:
-    """Kart oluştur, Twitter'a yükle, media_id döndür. DEDİ için çağrılmaz."""
-    try:
-        with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as f:
-            card_path = f.name
-        make_card(sonuc, streak, tarih, out=card_path)
-        api = x_api_v1()
-        media = api.media_upload(card_path)
-        os.unlink(card_path)
-        return str(media.media_id)
-    except Exception as e:
-        print("Card upload failed (non-fatal):", repr(e))
-        return None
-
-
-def tweet_with_reply(main_text: str, media_id: Optional[str] = None) -> None:
-    client = x_client()
-    kwargs = {"text": main_text}
-    if media_id:
-        kwargs["media_ids"] = [media_id]
-    tw = client.create_tweet(**kwargs)
-    tweet_id = tw.data["id"]
-    reply = "🔁 Takip etmek için takip edin.\n\n📊 Son 30 gün istatistiği yakında paylaşılacak."
-    try:
-        client.create_tweet(text=reply, in_reply_to_tweet_id=tweet_id)
-    except Exception as e:
-        print("Reply tweet failed (non-fatal):", repr(e))
-
-
 def tweet_simple(text: str) -> None:
     x_client().create_tweet(text=text)
+
+
+def tweet_with_media(text: str, media_path: str) -> None:
+    media = x_api_v1().media_upload(media_path)
+    x_client().create_tweet(text=text, media_ids=[str(media.media_id)])
 
 
 # -------------------------
 # State + cleanup
 # -------------------------
 def load_state() -> dict:
-    default = {"daily": {}, "streak": 0, "last_monthly_post": ""}
+    default = {"daily": {}, "streak": 0, "streak_result": "", "last_monthly_post": ""}
     if not os.path.exists(STATE_FILE):
         return default
     try:
@@ -124,6 +100,8 @@ def load_state() -> dict:
         data["streak"] = 0
     if not isinstance(data.get("last_monthly_post"), str):
         data["last_monthly_post"] = ""
+    if data.get("streak_result") not in ("dedi", "demedi"):
+        data["streak_result"] = ""
     return data
 
 
@@ -151,19 +129,12 @@ def ensure_history_header() -> None:
         csv.writer(f).writerow(["date", "spoke", "kurt", "url"])
 
 
-def append_history(d: date, spoke: bool, kurt: bool, url: Optional[str]) -> None:
+def append_history(d: date, spoke: bool, kurt: bool, url: str | None) -> None:
     ensure_history_header()
     with open(HISTORY_FILE, "a", encoding="utf-8", newline="") as f:
         csv.writer(f).writerow([
             d.isoformat(), "Y" if spoke else "N", "Y" if kurt else "N", url or ""
         ])
-
-
-def previous_month(today: date) -> tuple[str, int, int]:
-    y, m = today.year, today.month
-    if m == 1:
-        return (f"{y-1}-12", y - 1, 12)
-    return (f"{y}-{m-1:02d}", y, m - 1)
 
 
 def monthly_stats_spoken_only(year: int, month: int) -> dict:
@@ -188,10 +159,63 @@ def monthly_stats_spoken_only(year: int, month: int) -> dict:
     return stats
 
 
+def previous_month(today: date) -> tuple[str, int, int]:
+    y, m = today.year, today.month
+    if m == 1:
+        return (f"{y-1}-12", y - 1, 12)
+    return (f"{y}-{m-1:02d}", y, m - 1)
+
+
+def monthly_stats_text(key: str, stats: dict) -> str:
+    return (
+        f"{key} ayı istatistikleri:\n\n"
+        f"Konuştuğu gün sayısı: {stats['spoken_days']}\n"
+        f'"Kürt" dediği konuşma günü: {stats["kurt_yes"]}\n'
+        f'"Kürt" demediği konuşma günü: {stats["kurt_no"]}\n\n'
+        f"Kaynak: {GUNDEM_URL}"
+    )
+
+
+def next_spoken_streak(state: dict, result: str) -> int:
+    current = int(state.get("streak", 0))
+    if state.get("streak_result") == result:
+        current += 1
+    else:
+        current = 1
+    state["streak"] = current
+    state["streak_result"] = result
+    return current
+
+
+def post_monthly_stats_if_due(state: dict, today: date, override: str) -> None:
+    if override or today.day != 1:
+        return
+    stat_key, stat_year, stat_month = previous_month(today)
+    if state.get("last_monthly_post") == stat_key:
+        return
+    stats = monthly_stats_spoken_only(stat_year, stat_month)
+    if stats["spoken_days"] <= 0:
+        return
+    with tempfile.NamedTemporaryFile(suffix=".png", delete=False) as f:
+        report_path = f.name
+    try:
+        make_monthly_report(stat_year, stat_month, out=report_path)
+        msg = monthly_stats_text(stat_key, stats)
+        state["last_monthly_post"] = stat_key
+        save_state(state)
+        print("Posting monthly stats image...")
+        tweet_with_media(msg, report_path)
+    finally:
+        try:
+            os.unlink(report_path)
+        except OSError:
+            pass
+
+
 # -------------------------
 # CHP parsing
 # -------------------------
-def parse_article_date(soup: BeautifulSoup) -> Optional[datetime]:
+def parse_article_date(soup: BeautifulSoup) -> datetime | None:
     time_tag = soup.find("time", attrs={"datetime": True})
     if time_tag:
         try:
@@ -209,7 +233,7 @@ def parse_article_date(soup: BeautifulSoup) -> Optional[datetime]:
     return None
 
 
-def find_latest_ozel_link(gundem_html: str) -> Optional[str]:
+def find_latest_ozel_link(gundem_html: str) -> str | None:
     soup = BeautifulSoup(gundem_html, "html.parser")
     seen = set()
     candidates = []
@@ -305,27 +329,8 @@ def main():
         print("Today already processed. Exiting.")
         state["daily"][today_key] = daily
         save_state(state)
+        post_monthly_stats_if_due(state, today, override)
         return
-
-    # -------------------------
-    # Aylık istatistik (ayın 1'i): backfill koşusunda atlanır
-    # -------------------------
-    if (not override) and today.day == 1:
-        prev_key, py, pm = previous_month(today)
-        if state.get("last_monthly_post") != prev_key:
-            s = monthly_stats_spoken_only(py, pm)
-            if s["spoken_days"] > 0:
-                msg = (
-                    f"📊 {prev_key} özeti (sadece konuştuğu günler)\n\n"
-                    f"🗣 Konuştuğu gün sayısı: {s['spoken_days']}\n\n"
-                    f'🟥 "Kürt" dediği konuşma günü: {s["kurt_yes"]}\n'
-                    f'⬜ "Kürt" demediği konuşma günü: {s["kurt_no"]}\n\n'
-                    f"Kaynak: {GUNDEM_URL}"
-                )
-                state["last_monthly_post"] = prev_key
-                save_state(state)
-                print("Posting monthly stats…")
-                tweet_simple(msg)
 
     # -------------------------
     # CHP kontrol
@@ -346,53 +351,39 @@ def main():
 
     print(f"Detected: spoke_now={spoke_now}, kurt_now={kurt_now}, url={latest_url}")
 
-    streak = int(state.get("streak", 0))
-
     # -------------------------
     # Tweet
     # -------------------------
     if not spoke_now:
         main_text = (
-            "Özgür Özel bugün Kürt dedi mi?\n\n"
-            "⬜ SONUÇ: Bugün konuşmadı.\n\n"
-            f"📅 {date_str}"
+            f"{date_str}: Konuşmadı.\n\n"
+            f"Kaynak: {GUNDEM_URL}"
         )
         print("Posting (no speech) tweet…")
-        media_id = upload_card("konusmadi", 0, date_str)
-        tweet_with_reply(main_text, media_id=media_id)
+        tweet_simple(main_text)
         append_history(today, spoke=False, kurt=False, url=None)
 
     elif kurt_now:
-        state["streak"] = 0
-        src = latest_url or GUNDEM_URL
+        st = next_spoken_streak(state, "dedi")
         main_text = (
-            "Özgür Özel bugün Kürt dedi mi?\n\n"
-            "🟥 SONUÇ: DEDİ\n\n"
-            "⏱ Sayaç sıfırlandı.\n\n"
-            f"📅 {date_str}\n\n"
-            f"🔗 Kaynak:\n{src}"
+            f"{date_str}: Dedi.\n\n"
+            f'{st} konuşma günüdür "Kürt" diyor.\n\n'
+            f"Kaynak: {latest_url or GUNDEM_URL}"
         )
         print("Posting (kurt said) tweet…")
-        tweet_with_reply(main_text)  # DEDİ: kart yok, link var
+        tweet_simple(main_text)
         append_history(today, spoke=True, kurt=True, url=latest_url)
 
     else:
-        state["streak"] = streak + 1
-        st = state["streak"]
+        st = next_spoken_streak(state, "demedi")
         main_text = (
-            "Özgür Özel bugün Kürt dedi mi?\n\n"
-            "⬜ SONUÇ: DEMEDİ\n\n"
-            f'⏱ {st} konuşma günüdür "Kürt" demiyor.\n\n'
-            f"📅 {date_str}"
+            f"{date_str}: Demedi.\n\n"
+            f'{st} konuşma günüdür "Kürt" demiyor.\n\n'
+            f"Kaynak: {latest_url or GUNDEM_URL}"
         )
         print("Posting (kurt NOT said) tweet…")
-        media_id = upload_card("demedi", st, date_str)
-        tweet_with_reply(main_text, media_id=media_id)
+        tweet_simple(main_text)
         append_history(today, spoke=True, kurt=False, url=latest_url)
-
-        if st == 3:
-            print("Posting streak=3 alert…")
-            tweet_simple('⚠️ Özgür Özel 3 konuşma günüdür konuşmalarında "Kürt" demiyor.')
 
     daily["done"] = True
     daily["spoke_any"] = spoke_now
@@ -400,6 +391,8 @@ def main():
     daily["last_url"] = latest_url
     state["daily"][today_key] = daily
     save_state(state)
+    post_monthly_stats_if_due(state, today, override)
+
     print("Done.")
 
 
