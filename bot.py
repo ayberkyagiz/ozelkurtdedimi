@@ -77,6 +77,35 @@ def tweet_with_media(text: str, media_path: str) -> None:
     x_client().create_tweet(text=text, media_ids=[str(media.media_id)])
 
 
+def log_tweet_error(label: str, exc: Exception) -> None:
+    print(f"{label} failed:", repr(exc))
+    response = getattr(exc, "response", None)
+    if response is not None:
+        print("X API status:", getattr(response, "status_code", "unknown"))
+        try:
+            print("X API response:", response.text)
+        except Exception:
+            pass
+
+
+def try_tweet_simple(text: str, label: str) -> bool:
+    try:
+        tweet_simple(text)
+        return True
+    except Exception as e:
+        log_tweet_error(label, e)
+        return False
+
+
+def try_tweet_with_media(text: str, media_path: str, label: str) -> bool:
+    try:
+        tweet_with_media(text, media_path)
+        return True
+    except Exception as e:
+        log_tweet_error(label, e)
+        return False
+
+
 # -------------------------
 # State + cleanup
 # -------------------------
@@ -245,7 +274,7 @@ def post_monthly_stats_if_due(state: dict, today: date, override: str) -> None:
         state["last_monthly_post"] = stat_key
         save_state(state)
         print("Posting monthly stats image...")
-        tweet_with_media(msg, report_path)
+        try_tweet_with_media(msg, report_path, "Monthly stats tweet")
     finally:
         try:
             os.unlink(report_path)
@@ -266,7 +295,7 @@ def post_weekly_stats_if_due(state: dict, today: date, override: str) -> None:
     state["last_weekly_post"] = week_key
     save_state(state)
     print("Posting weekly stats...")
-    tweet_simple(weekly_stats_text(week_start, today, stats))
+    try_tweet_simple(weekly_stats_text(week_start, today, stats), "Weekly stats tweet")
 
 
 # -------------------------
@@ -418,7 +447,7 @@ def main():
             f"Kaynak: {GUNDEM_URL}"
         )
         print("Posting (no speech) tweet…")
-        tweet_simple(main_text)
+        try_tweet_simple(main_text, "No speech tweet")
         append_history(today, spoke=False, kurt=False, url=None)
 
     elif kurt_now:
@@ -429,7 +458,7 @@ def main():
             f"Kaynak: {latest_url or GUNDEM_URL}"
         )
         print("Posting (kurt said) tweet…")
-        tweet_simple(main_text)
+        try_tweet_simple(main_text, "Kurt said tweet")
         append_history(today, spoke=True, kurt=True, url=latest_url)
 
     else:
@@ -440,7 +469,7 @@ def main():
             f"Kaynak: {latest_url or GUNDEM_URL}"
         )
         print("Posting (kurt NOT said) tweet…")
-        tweet_simple(main_text)
+        try_tweet_simple(main_text, "Kurt not said tweet")
         append_history(today, spoke=True, kurt=False, url=latest_url)
 
     daily["done"] = True
