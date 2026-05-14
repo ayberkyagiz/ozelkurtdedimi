@@ -25,6 +25,9 @@ AYLAR_TR = {
 }
 
 
+# -------------------------
+# Utilities
+# -------------------------
 def tr_date_str(d: date) -> str:
     return f"{d.day} {AYLAR_TR[d.month]} {d.year}"
 
@@ -108,6 +111,9 @@ def try_tweet_with_media(text: str, media_path: str, label: str) -> bool:
         return False
 
 
+# -------------------------
+# State + cleanup
+# -------------------------
 def load_state() -> dict:
     default = {
         "daily": {},
@@ -155,6 +161,9 @@ def cleanup_daily(state: dict, keep_days: int = 30) -> None:
         del state["daily"][k]
 
 
+# -------------------------
+# History / monthly stats
+# -------------------------
 def ensure_history_header() -> None:
     if os.path.exists(HISTORY_FILE):
         return
@@ -271,6 +280,11 @@ def next_spoken_streak(state: dict, result: str) -> int:
     return current
 
 
+def streak_text(result: str, streak: int) -> str:
+    verb = "diyor" if result == "dedi" else "demiyor"
+    return f'{streak} konuşma günüdür "Kürt" {verb}.'
+
+
 def post_monthly_stats_if_due(state: dict, today: date, override: str) -> None:
     if override or today.day != 1:
         return
@@ -312,6 +326,9 @@ def post_weekly_stats_if_due(state: dict, today: date, override: str) -> None:
     try_tweet_simple(weekly_stats_text(week_start, today, stats), "Weekly stats tweet")
 
 
+# -------------------------
+# CHP parsing
+# -------------------------
 def parse_article_date(soup: BeautifulSoup) -> datetime | None:
     time_tag = soup.find("time", attrs={"datetime": True})
     if time_tag:
@@ -371,8 +388,10 @@ def find_ozel_links_for_date(target: date, max_pages: int = 8) -> list[str]:
 
 def extract_article_text(article_html: str) -> str:
     soup = BeautifulSoup(article_html, "html.parser")
+    # Menü, nav, header, footer, script, style kaldır
     for tag in soup.select("nav, header, footer, script, style, .menu, .navigation"):
         tag.decompose()
+    # Önce makale ana içeriğini bulmaya çalış
     article = soup.select_one("article, .article-content, .journal-detail, .news-detail, main")
     if article:
         return "\n".join(
@@ -380,6 +399,7 @@ def extract_article_text(article_html: str) -> str:
             for p in article.select("p")
             if p.get_text(strip=True)
         ).strip()
+    # Fallback: tüm p tagları
     return "\n".join(
         p.get_text(" ", strip=True)
         for p in soup.select("p")
@@ -391,10 +411,15 @@ def contains_kurt(text: str) -> bool:
     return "kürt" in (text or "").lower()
 
 
+# -------------------------
+# Main
+# -------------------------
 def main():
     print("BOT STARTED:", datetime.now().isoformat())
 
     now = datetime.now(TZ)
+
+    # Backfill: FORCE_DATE=YYYY-MM-DD
     override = os.getenv("FORCE_DATE", "").strip()
     if override:
         try:
@@ -406,12 +431,15 @@ def main():
 
     today_key = today.isoformat()
     date_str = tr_date_str(today)
+
     print(f"NOW: {now.isoformat()} | TODAY_KEY: {today_key}")
 
     state = load_state()
     cleanup_daily(state, keep_days=30)
+
     daily = state["daily"].get(today_key, {"done": False, "spoke_any": False, "kurt_any": False, "last_url": None})
 
+    # Bugün zaten işlendiyse çık
     if daily.get("done") is True:
         print("Today already processed. Exiting.")
         state["daily"][today_key] = daily
@@ -420,6 +448,9 @@ def main():
         post_weekly_stats_if_due(state, today, override)
         return
 
+    # -------------------------
+    # CHP kontrol
+    # -------------------------
     article_urls = find_ozel_links_for_date(today)
     spoke_now = bool(article_urls)
     kurt_now = False
@@ -437,31 +468,36 @@ def main():
 
     print(f"Detected: spoke_now={spoke_now}, kurt_now={kurt_now}, url={source_url}")
 
+    # -------------------------
+    # Tweet
+    # -------------------------
     if not spoke_now:
         main_text = (
             f"{date_str}\n"
-            "Özgür Özel Kürt dedi mi? Konuşmadı.\n\n"
-            f"Kaynak:\n{GUNDEM_URL}"
+            "Özgür Özel Kürt dedi mi? Konuşmadı."
         )
         print("Posting (no speech) tweet…")
         try_tweet_simple(main_text, "No speech tweet")
         append_history(today, spoke=False, kurt=False, url=None)
+
     elif kurt_now:
-        next_spoken_streak(state, "dedi")
+        streak = next_spoken_streak(state, "dedi")
         main_text = (
             f"{date_str}\n"
             "Özgür Özel Kürt dedi mi? Dedi.\n\n"
+            f"{streak_text('dedi', streak)}\n\n"
             f"Kaynak:\n{source_url or GUNDEM_URL}"
         )
         print("Posting (kurt said) tweet…")
         try_tweet_simple(main_text, "Kurt said tweet")
         append_history(today, spoke=True, kurt=True, url=source_url)
+
     else:
-        next_spoken_streak(state, "demedi")
+        streak = next_spoken_streak(state, "demedi")
         main_text = (
             f"{date_str}\n"
             "Özgür Özel Kürt dedi mi? Demedi.\n\n"
-            f"Kaynak:\n{source_url or GUNDEM_URL}"
+            f"{streak_text('demedi', streak)}"
         )
         print("Posting (kurt NOT said) tweet…")
         try_tweet_simple(main_text, "Kurt not said tweet")
