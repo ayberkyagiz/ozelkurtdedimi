@@ -10,6 +10,7 @@ from generate_card import ensure_fonts, load
 W, H = 1200, 675
 START_YEAR, START_MONTH = 2023, 11
 ARCHIVE_FILE = "Ozgur_Ozel_Tarihi_Arsiv.csv"
+MONTHLY_ARCHIVE_FILE = "monthly_archive.csv"
 HISTORY_FILE = "history.csv"
 
 AYLAR_TR = {
@@ -56,16 +57,39 @@ def read_records() -> dict[date, bool]:
     return records
 
 
+def read_monthly_archive() -> dict[tuple[int, int], dict]:
+    archive = {}
+    if not os.path.exists(MONTHLY_ARCHIVE_FILE):
+        return archive
+    with open(MONTHLY_ARCHIVE_FILE, "r", encoding="utf-8", newline="") as f:
+        for row in csv.DictReader(f):
+            try:
+                year = int(row["year"])
+                month = int(row["month"])
+                spoken = int(row["spoken"])
+                yes = int(row["yes"])
+                no = int(row["no"])
+            except Exception:
+                continue
+            rate = (yes / spoken * 100) if spoken else None
+            archive[(year, month)] = {"year": year, "month": month, "spoken": spoken, "yes": yes, "no": no, "rate": rate}
+    return archive
+
+
 def monthly_series(end_year: int, end_month: int) -> list[dict]:
+    archive = read_monthly_archive()
     records = read_records()
     series = []
     for y, m in month_iter(START_YEAR, START_MONTH, end_year, end_month):
         month_records = [kurt for d, kurt in records.items() if d.year == y and d.month == m]
-        spoken = len(month_records)
-        yes = sum(1 for kurt in month_records if kurt)
-        no = spoken - yes
-        rate = (yes / spoken * 100) if spoken else None
-        series.append({"year": y, "month": m, "spoken": spoken, "yes": yes, "no": no, "rate": rate})
+        if month_records:
+            spoken = len(month_records)
+            yes = sum(1 for kurt in month_records if kurt)
+            no = spoken - yes
+            rate = (yes / spoken * 100) if spoken else None
+            series.append({"year": y, "month": m, "spoken": spoken, "yes": yes, "no": no, "rate": rate})
+        else:
+            series.append(archive.get((y, m), {"year": y, "month": m, "spoken": 0, "yes": 0, "no": 0, "rate": None}))
     return series
 
 
