@@ -1,0 +1,39 @@
+name: post-may-backfill
+on:
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/post_backfill_may.yml"
+  workflow_dispatch:
+permissions:
+  contents: write
+jobs:
+  post:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 tweepy pillow
+      - name: Post May daily backfill and April monthly report
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_KEY_SECRET: ${{ secrets.X_API_KEY_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+        run: |
+          FORCE_DATE=2026-05-11 python bot.py
+          FORCE_DATE=2026-05-12 python bot.py
+          FORCE_DATE=2026-05-13 python bot.py
+          FORCE_MONTHLY=2026-04 python monthly_post.py
+      - name: Commit state/history
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add state.json history.csv || true
+          git commit -m "Update backfill state" || echo "No changes"
+          git push
