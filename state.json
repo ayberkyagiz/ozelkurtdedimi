@@ -1,6 +1,6 @@
 {
   "last_monthly_post": "2026-04",
-  "streak": 1,
+  "streak": 2,
   "daily": {
     "2026-04-14": {
       "done": true,
@@ -175,6 +175,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/ozgur-ozel-ekrem-mamoglu-ve-mansur-yavastan-ortak-mesaj-turkiyeye-hep-birlikte-umut-olacagiz"
+    },
+    "2026-05-14": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-koc-ailesi-ile-gorustu"
     }
   },
   "streak_result": "demedi",
