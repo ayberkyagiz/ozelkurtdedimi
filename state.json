@@ -152,18 +152,6 @@
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozelden-anneler-gunu-ziyaretleri"
     },
-    "2026-05-12": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": true,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-ben-kacmam-ugrasani-pisman-ederim-diyen-bir-hadsiz-basinizin-belasidir"
-    },
-    "2026-05-13": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/ozgur-ozel-ekrem-mamoglu-ve-mansur-yavastan-ortak-mesaj-turkiyeye-hep-birlikte-umut-olacagiz"
-    },
     "2026-05-04": {
       "done": true,
       "spoke_any": true,
@@ -175,6 +163,18 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-05-12": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": true,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-ben-kacmam-ugrasani-pisman-ederim-diyen-bir-hadsiz-basinizin-belasidir"
+    },
+    "2026-05-13": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/ozgur-ozel-ekrem-mamoglu-ve-mansur-yavastan-ortak-mesaj-turkiyeye-hep-birlikte-umut-olacagiz"
     }
   },
   "streak_result": "demedi",
