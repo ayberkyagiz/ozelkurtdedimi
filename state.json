@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-04",
-  "streak": 0,
+  "streak": 1,
   "daily": {
-    "2026-04-13": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-sandigi-namusu-gibi-bilen-nsanlara-bir-kere-oy-verin-sonra-5-yil-kenara-cekilin-diyemezsiniz"
-    },
     "2026-04-14": {
       "done": true,
       "spoke_any": true,
@@ -122,35 +116,41 @@
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-ozgur-ozel-tarihin-en-uzun-ve-en-kalabalik-secim-kampanyasindayiz-tum-vatan-sathina-yayiliyoruz"
     },
-    "2026-05-05": {
+    "2026-05-04": {
       "done": true,
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-ktidar-olmak-ve-adaleti-getirmek-cin-savunmadan-hucuma-cikiyoruz"
     },
-    "2026-05-06": {
+    "2026-05-05": {
       "done": true,
       "spoke_any": true,
       "kurt_any": true,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-birak-saraylarda-mermer-olmayi-toprak-ol-bagrinda-guller-yetissin"
     },
-    "2026-05-07": {
+    "2026-05-06": {
       "done": true,
       "spoke_any": true,
       "kurt_any": true,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-kendisinden-sonraki-tum-kusaklara-lham-veren-3-onderin-hatirasi-onunde-saygiyla-egiliyoruz"
     },
-    "2026-05-08": {
+    "2026-05-07": {
       "done": true,
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-stanbul-barosunda-duzenlenen-avukatlik-ruhsat-torenine-katildi"
     },
+    "2026-05-08": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": true,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-ozgur-ozel-ak-partinin-14-puan-onundeyiz-denemesi-bedava-getirsinler-sandigi-koyalim"
+    },
     "2026-05-09": {
       "done": true,
       "spoke_any": true,
       "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-baris-annelerini-kabul-etti"
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-savciyken-operasyon-planladigi-erdoganla-simdi-kriptolu-telefonla-konusup-sesini-kayda-aliyor"
     },
     "2026-05-10": {
       "done": true,
@@ -158,17 +158,25 @@
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozelden-anneler-gunu-ziyaretleri"
     },
-    "2026-05-12": {
+    "2026-05-11": {
       "done": true,
-      "spoke_any": true,
+      "spoke_any": false,
       "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozelden-anneler-gunu-ziyaretleri"
+      "last_url": null
     },
-    "2026-05-13": {
+    "2026-05-12": {
       "done": true,
       "spoke_any": true,
       "kurt_any": true,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-ben-kacmam-ugrasani-pisman-ederim-diyen-bir-hadsiz-basinizin-belasidir"
+    },
+    "2026-05-13": {
+      "done": false,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/ozgur-ozel-ekrem-mamoglu-ve-mansur-yavastan-ortak-mesaj-turkiyeye-hep-birlikte-umut-olacagiz"
     }
-  }
+  },
+  "streak_result": "demedi",
+  "last_weekly_post": ""
 }
