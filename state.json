@@ -116,12 +116,6 @@
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-ozgur-ozel-tarihin-en-uzun-ve-en-kalabalik-secim-kampanyasindayiz-tum-vatan-sathina-yayiliyoruz"
     },
-    "2026-05-04": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-ktidar-olmak-ve-adaleti-getirmek-cin-savunmadan-hucuma-cikiyoruz"
-    },
     "2026-05-05": {
       "done": true,
       "spoke_any": true,
@@ -158,14 +152,8 @@
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozelden-anneler-gunu-ziyaretleri"
     },
-    "2026-05-11": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-05-12": {
-      "done": true,
+      "done": false,
       "spoke_any": true,
       "kurt_any": true,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-ben-kacmam-ugrasani-pisman-ederim-diyen-bir-hadsiz-basinizin-belasidir"
@@ -175,6 +163,18 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/ozgur-ozel-ekrem-mamoglu-ve-mansur-yavastan-ortak-mesaj-turkiyeye-hep-birlikte-umut-olacagiz"
+    },
+    "2026-05-04": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-ktidar-olmak-ve-adaleti-getirmek-cin-savunmadan-hucuma-cikiyoruz"
+    },
+    "2026-05-11": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
     }
   },
   "streak_result": "demedi",
