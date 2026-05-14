@@ -1,0 +1,60 @@
+name: repost-may-11-13-and-april
+on:
+  push:
+    paths:
+      - ".github/workflows/repost_may_11_13_and_april.yml"
+permissions:
+  contents: write
+jobs:
+  run:
+    runs-on: ubuntu-latest
+    env:
+      FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: true
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install dependencies
+        run: pip install requests beautifulsoup4 tweepy pillow
+      - name: Reset May 11-13 state
+        run: |
+          python - <<'PY'
+          import json
+          from pathlib import Path
+          path = Path("state.json")
+          state = json.loads(path.read_text(encoding="utf-8")) if path.exists() else {}
+          daily = state.setdefault("daily", {})
+          for key in ("2026-05-11", "2026-05-12", "2026-05-13"):
+              daily.pop(key, None)
+          state["streak_result"] = "demedi"
+          state["streak"] = 2
+          path.write_text(json.dumps(state, ensure_ascii=False, indent=2) + "\n", encoding="utf-8")
+          PY
+      - name: Repost May 11-13
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_KEY_SECRET: ${{ secrets.X_API_KEY_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+        run: |
+          FORCE_DATE=2026-05-11 python bot.py
+          FORCE_DATE=2026-05-12 python bot.py
+          FORCE_DATE=2026-05-13 python bot.py
+      - name: Repost corrected April monthly report
+        env:
+          X_API_KEY: ${{ secrets.X_API_KEY }}
+          X_API_KEY_SECRET: ${{ secrets.X_API_KEY_SECRET }}
+          X_ACCESS_TOKEN: ${{ secrets.X_ACCESS_TOKEN }}
+          X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
+          FORCE_MONTHLY: 2026-04
+        run: python monthly_post.py
+      - name: Commit state/history
+        run: |
+          git config user.name "github-actions"
+          git config user.email "github-actions@github.com"
+          git add state.json history.csv || true
+          git commit -m "Repost May backfill and April report" || echo "No changes"
+          git push
