@@ -5,6 +5,7 @@ import requests
 from bs4 import BeautifulSoup
 from datetime import datetime, date, timedelta
 from zoneinfo import ZoneInfo
+from urllib.parse import urljoin
 import tweepy
 import tempfile
 
@@ -12,7 +13,7 @@ from generate_monthly_report import make_monthly_report
 
 BASE = "https://chp.org.tr"
 GUNDEM_URL = f"{BASE}/gundem/"
-TZ = ZoneInfo("Europe/Istanbul")
+TZ = ZoneInfo("America/New_York")
 
 STATE_FILE = "state.json"
 HISTORY_FILE = "history.csv"
@@ -24,11 +25,12 @@ AYLAR_TR = {
 }
 
 
-# -------------------------
-# Utilities
-# -------------------------
 def tr_date_str(d: date) -> str:
     return f"{d.day} {AYLAR_TR[d.month]} {d.year}"
+
+
+def chp_date_str(d: date) -> str:
+    return d.strftime("%d.%m.%Y")
 
 
 def fetch(url: str) -> str:
@@ -106,9 +108,6 @@ def try_tweet_with_media(text: str, media_path: str, label: str) -> bool:
         return False
 
 
-# -------------------------
-# State + cleanup
-# -------------------------
 def load_state() -> dict:
     default = {
         "daily": {},
@@ -156,9 +155,6 @@ def cleanup_daily(state: dict, keep_days: int = 30) -> None:
         del state["daily"][k]
 
 
-# -------------------------
-# History / monthly stats
-# -------------------------
 def ensure_history_header() -> None:
     if os.path.exists(HISTORY_FILE):
         return
@@ -168,10 +164,28 @@ def ensure_history_header() -> None:
 
 def append_history(d: date, spoke: bool, kurt: bool, url: str | None) -> None:
     ensure_history_header()
-    with open(HISTORY_FILE, "a", encoding="utf-8", newline="") as f:
-        csv.writer(f).writerow([
-            d.isoformat(), "Y" if spoke else "N", "Y" if kurt else "N", url or ""
-        ])
+    new_row = {
+        "date": d.isoformat(),
+        "spoke": "Y" if spoke else "N",
+        "kurt": "Y" if kurt else "N",
+        "url": url or "",
+    }
+    rows = []
+    replaced = False
+    with open(HISTORY_FILE, "r", encoding="utf-8", newline="") as f:
+        for row in csv.DictReader(f):
+            if row.get("date") == new_row["date"]:
+                rows.append(new_row)
+                replaced = True
+            else:
+                rows.append(row)
+    if not replaced:
+        rows.append(new_row)
+    rows.sort(key=lambda row: row.get("date", ""))
+    with open(HISTORY_FILE, "w", encoding="utf-8", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=["date", "spoke", "kurt", "url"])
+        writer.writeheader()
+        writer.writerows(rows)
 
 
 def monthly_stats_spoken_only(year: int, month: int) -> dict:
@@ -298,9 +312,6 @@ def post_weekly_stats_if_due(state: dict, today: date, override: str) -> None:
     try_tweet_simple(weekly_stats_text(week_start, today, stats), "Weekly stats tweet")
 
 
-# -------------------------
-# CHP parsing
-# -------------------------
 def parse_article_date(soup: BeautifulSoup) -> datetime | None:
     time_tag = soup.find("time", attrs={"datetime": True})
     if time_tag:
@@ -319,50 +330,49 @@ def parse_article_date(soup: BeautifulSoup) -> datetime | None:
     return None
 
 
-def find_latest_ozel_link(gundem_html: str) -> str | None:
-    soup = BeautifulSoup(gundem_html, "html.parser")
+def ozel_anchor_text(text: str) -> bool:
+    t = (text or "").lower()
+    return any(
+        marker in t
+        for marker in (
+            "özgür özel",
+            "ozgur ozel",
+            "chp lideri özel",
+            "chp lideri ozel",
+            "genel başkanı özel",
+            "genel baskani ozel",
+        )
+    )
+
+
+def find_ozel_links_for_date(target: date, max_pages: int = 8) -> list[str]:
+    target_token = chp_date_str(target)
     seen = set()
-    candidates = []
-    for a in soup.select("a[href]"):
-        t = (a.get_text(" ", strip=True) or "").lower()
-        if ("özgür özel" not in t) and ("ozgur ozel" not in t):
-            continue
-        href = a.get("href") or ""
-        if href.startswith("/"):
-            href = BASE + href
-        if not href.startswith(BASE):
-            continue
-        u = normalize_url(href)
-        if u and u not in seen:
-            seen.add(u)
-            candidates.append(u)
-
-    if not candidates:
-        return None
-    if len(candidates) == 1:
-        return candidates[0]
-
-    dated = []
-    for url in candidates:
-        try:
-            dt = parse_article_date(BeautifulSoup(fetch(url), "html.parser"))
-        except Exception as e:
-            print(f"Date fetch failed for {url}: {repr(e)}")
-            dt = None
-        dated.append((dt, url))
-
-    dated.sort(key=lambda x: (x[0] is not None, x[0] or datetime.min), reverse=True)
-    best_dt, best_url = dated[0]
-    print(f"Latest Özel article: {best_url} (date={best_dt})")
-    return best_url
+    matches = []
+    for page in range(1, max_pages + 1):
+        url = GUNDEM_URL if page == 1 else f"{GUNDEM_URL}?page={page}"
+        soup = BeautifulSoup(fetch(url), "html.parser")
+        page_had_target = False
+        for a in soup.select("a[href]"):
+            text = " ".join((a.get_text(" ", strip=True) or "").split())
+            if target_token not in text:
+                continue
+            page_had_target = True
+            if not ozel_anchor_text(text):
+                continue
+            href = normalize_url(urljoin(BASE, a.get("href") or ""))
+            if href.startswith(BASE) and href not in seen:
+                seen.add(href)
+                matches.append(href)
+        if matches and not page_had_target:
+            break
+    return matches
 
 
 def extract_article_text(article_html: str) -> str:
     soup = BeautifulSoup(article_html, "html.parser")
-    # Menü, nav, header, footer, script, style kaldır
     for tag in soup.select("nav, header, footer, script, style, .menu, .navigation"):
         tag.decompose()
-    # Önce makale ana içeriğini bulmaya çalış
     article = soup.select_one("article, .article-content, .journal-detail, .news-detail, main")
     if article:
         return "\n".join(
@@ -370,7 +380,6 @@ def extract_article_text(article_html: str) -> str:
             for p in article.select("p")
             if p.get_text(strip=True)
         ).strip()
-    # Fallback: tüm p tagları
     return "\n".join(
         p.get_text(" ", strip=True)
         for p in soup.select("p")
@@ -382,15 +391,10 @@ def contains_kurt(text: str) -> bool:
     return "kürt" in (text or "").lower()
 
 
-# -------------------------
-# Main
-# -------------------------
 def main():
     print("BOT STARTED:", datetime.now().isoformat())
 
     now = datetime.now(TZ)
-
-    # Backfill: FORCE_DATE=YYYY-MM-DD
     override = os.getenv("FORCE_DATE", "").strip()
     if override:
         try:
@@ -402,15 +406,12 @@ def main():
 
     today_key = today.isoformat()
     date_str = tr_date_str(today)
-
     print(f"NOW: {now.isoformat()} | TODAY_KEY: {today_key}")
 
     state = load_state()
     cleanup_daily(state, keep_days=30)
-
     daily = state["daily"].get(today_key, {"done": False, "spoke_any": False, "kurt_any": False, "last_url": None})
 
-    # Bugün zaten işlendiyse çık
     if daily.get("done") is True:
         print("Today already processed. Exiting.")
         state["daily"][today_key] = daily
@@ -419,63 +420,57 @@ def main():
         post_weekly_stats_if_due(state, today, override)
         return
 
-    # -------------------------
-    # CHP kontrol
-    # -------------------------
-    gundem_html = fetch(GUNDEM_URL)
-    latest_url = find_latest_ozel_link(gundem_html)
-
-    spoke_now = False
+    article_urls = find_ozel_links_for_date(today)
+    spoke_now = bool(article_urls)
     kurt_now = False
+    source_url = article_urls[0] if article_urls else None
 
-    if latest_url:
-        spoke_now = True
+    for article_url in article_urls:
         try:
-            text = extract_article_text(fetch(latest_url))
-            kurt_now = contains_kurt(text)
+            text = extract_article_text(fetch(article_url))
+            if contains_kurt(text):
+                kurt_now = True
+                source_url = article_url
+                break
         except Exception as e:
-            print("Article fetch/parse error:", repr(e))
+            print(f"Article fetch/parse error for {article_url}:", repr(e))
 
-    print(f"Detected: spoke_now={spoke_now}, kurt_now={kurt_now}, url={latest_url}")
+    print(f"Detected: spoke_now={spoke_now}, kurt_now={kurt_now}, url={source_url}")
 
-    # -------------------------
-    # Tweet
-    # -------------------------
     if not spoke_now:
         main_text = (
-            f"{date_str}: Konuşmadı.\n\n"
-            f"Kaynak: {GUNDEM_URL}"
+            f"{date_str}\n"
+            "Özgür Özel Kürt dedi mi? Konuşmadı.\n\n"
+            f"Kaynak:\n{GUNDEM_URL}"
         )
         print("Posting (no speech) tweet…")
         try_tweet_simple(main_text, "No speech tweet")
         append_history(today, spoke=False, kurt=False, url=None)
-
     elif kurt_now:
-        st = next_spoken_streak(state, "dedi")
+        next_spoken_streak(state, "dedi")
         main_text = (
-            f"{date_str}: Dedi.\n\n"
-            f'{st} konuşma günüdür "Kürt" diyor.\n\n'
-            f"Kaynak: {latest_url or GUNDEM_URL}"
+            f"{date_str}\n"
+            "Özgür Özel Kürt dedi mi? Dedi.\n\n"
+            f"Kaynak:\n{source_url or GUNDEM_URL}"
         )
         print("Posting (kurt said) tweet…")
         try_tweet_simple(main_text, "Kurt said tweet")
-        append_history(today, spoke=True, kurt=True, url=latest_url)
-
+        append_history(today, spoke=True, kurt=True, url=source_url)
     else:
-        st = next_spoken_streak(state, "demedi")
+        next_spoken_streak(state, "demedi")
         main_text = (
-            f"{date_str}: Demedi.\n\n"
-            f'{st} konuşma günüdür "Kürt" demiyor.\n\n'
-            f"Kaynak: {latest_url or GUNDEM_URL}"
+            f"{date_str}\n"
+            "Özgür Özel Kürt dedi mi? Demedi.\n\n"
+            f"Kaynak:\n{source_url or GUNDEM_URL}"
         )
         print("Posting (kurt NOT said) tweet…")
         try_tweet_simple(main_text, "Kurt not said tweet")
-        append_history(today, spoke=True, kurt=False, url=latest_url)
+        append_history(today, spoke=True, kurt=False, url=source_url)
 
     daily["done"] = True
     daily["spoke_any"] = spoke_now
     daily["kurt_any"] = kurt_now
-    daily["last_url"] = latest_url
+    daily["last_url"] = source_url
     state["daily"][today_key] = daily
     save_state(state)
     post_monthly_stats_if_due(state, today, override)
