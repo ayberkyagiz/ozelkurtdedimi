@@ -2,12 +2,6 @@
   "last_monthly_post": "2026-04",
   "streak": 1,
   "daily": {
-    "2026-04-15": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-kahramanmaras-valisi-ile-gorustu"
-    },
     "2026-04-16": {
       "done": true,
       "spoke_any": true,
@@ -181,6 +175,12 @@
       "spoke_any": true,
       "kurt_any": true,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-bizi-silkeleyenlere-engel-olanlara-soyluyoruz-calisiyoruz-hep-birlikte-ktidara-yuruyoruz"
+    },
+    "2026-05-16": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
     }
   },
   "streak_result": "dedi",
