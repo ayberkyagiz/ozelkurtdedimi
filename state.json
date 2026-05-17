@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-04",
-  "streak": 1,
+  "streak": 2,
   "daily": {
-    "2026-04-16": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-kahramanmaras-valisi-ile-gorustu"
-    },
     "2026-04-17": {
       "done": true,
       "spoke_any": true,
@@ -181,8 +175,14 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-05-17": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": true,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-soz-veriyoruz-cumhuriyet-halk-partisi-ktidarinda-hicbir-cocugun-birbirinden-farki-olmayacak"
     }
   },
   "streak_result": "dedi",
-  "last_weekly_post": ""
+  "last_weekly_post": "2026-05-17"
 }
