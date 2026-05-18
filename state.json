@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-04",
-  "streak": 2,
+  "streak": 1,
   "daily": {
-    "2026-04-17": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-barselonada-junya-ogwa-elly-schlein-ve-jesse-klaver-ile-bir-araya-geldi"
-    },
     "2026-04-18": {
       "done": true,
       "spoke_any": true,
@@ -181,8 +175,14 @@
       "spoke_any": true,
       "kurt_any": true,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-soz-veriyoruz-cumhuriyet-halk-partisi-ktidarinda-hicbir-cocugun-birbirinden-farki-olmayacak"
+    },
+    "2026-05-18": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-ozgur-ozel-avrupa-yesil-partisi-es-genel-baskani-vula-tsetsiyi-kabul-etti"
     }
   },
-  "streak_result": "dedi",
+  "streak_result": "demedi",
   "last_weekly_post": "2026-05-17"
 }
