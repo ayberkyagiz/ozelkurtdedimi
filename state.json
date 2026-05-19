@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-04",
-  "streak": 1,
+  "streak": 2,
   "daily": {
-    "2026-04-18": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-bir-yili-askin-suredir-meydanlarda-mucadele-veriyoruz-darbeye-karsi-halkin-radesini-savunuyoruz"
-    },
     "2026-04-19": {
       "done": true,
       "spoke_any": true,
@@ -181,6 +175,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-ozgur-ozel-avrupa-yesil-partisi-es-genel-baskani-vula-tsetsiyi-kabul-etti"
+    },
+    "2026-05-19": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-mucadelemizde-en-buyuk-gorev-genclerdedir-onlara-guveniyoruz-birlikte-yuruyoruz"
     }
   },
   "streak_result": "demedi",
