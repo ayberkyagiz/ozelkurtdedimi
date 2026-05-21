@@ -1,13 +1,7 @@
 {
   "last_monthly_post": "2026-04",
-  "streak": 3,
+  "streak": 4,
   "daily": {
-    "2026-04-20": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": true,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-yapilan-operasyonlar-cok-kotu-bir-yolu-acmaktir-aklinizi-basiniza-toplayin"
-    },
     "2026-04-21": {
       "done": true,
       "spoke_any": true,
@@ -181,6 +175,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-ozgur-ozel-kadin-politika-baskanlari-ile-bir-araya-geldi"
+    },
+    "2026-05-21": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-ozgur-ozel-gazete-pencereye-konustu-ak-toroslar-cetesi---butlan-ttifakina-meydan-okuyorum"
     }
   },
   "streak_result": "demedi",
