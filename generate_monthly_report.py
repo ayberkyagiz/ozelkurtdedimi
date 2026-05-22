@@ -8,8 +8,8 @@ from generate_card import ensure_fonts, load
 
 
 W, H = 1200, 675
-START_YEAR, START_MONTH = 2023, 11
-ARCHIVE_FILE = "Ozgur_Ozel_Tarihi_Arsiv.csv"
+START_YEAR, START_MONTH = 2026, 5
+ARCHIVE_FILE = "Kemal_Kilicdaroglu_Tarihi_Arsiv.csv"
 MONTHLY_ARCHIVE_FILE = "monthly_archive.csv"
 HISTORY_FILE = "history.csv"
 
@@ -160,7 +160,7 @@ def make_monthly_report(year: int, month: int, out: str = "monthly_report.png") 
     draw = ImageDraw.Draw(img)
     draw.rounded_rectangle((10, 10, W - 10, H - 10), radius=26, fill=(250, 250, 248), outline=(206, 212, 216), width=2)
     draw.rounded_rectangle((10, 10, W - 10, 84), radius=24, fill=navy)
-    title = f'ÖZGÜR ÖZEL "KÜRT" KELİMESİ KULLANIM DURUMU ({AYLAR_TR[month].upper()} {year})'
+    title = f'KEMAL KILIÇDAROĞLU "KÜRT" KELİMESİ KULLANIM DURUMU ({AYLAR_TR[month].upper()} {year})'
     draw_center(draw, (20, 12, W - 20, 78), title, fonts["title"], (255, 255, 255))
 
     panel = (48, 92, W - 48, 318)
@@ -182,7 +182,7 @@ def make_monthly_report(year: int, month: int, out: str = "monthly_report.png") 
     draw.text((1030, 222), pct_text(current["rate"]), font=fonts["rate"], fill=ink)
 
     chart = (90, 380, 1140, 578)
-    draw.text((W / 2 - 255, 334), f"AYLIK KULLANIM ORANI (%) GRAFİĞİ (Kasım 2023 - {AYLAR_TR[month]} {year})", font=fonts["section"], fill=ink)
+    draw.text((W / 2 - 255, 334), f"AYLIK KULLANIM ORANI (%) GRAFİĞİ (Mayıs 2026 - {AYLAR_TR[month]} {year})", font=fonts["section"], fill=ink)
     x1, y1, x2, y2 = chart
     for pct in range(0, 101, 20):
         y = y2 - (pct / 100) * (y2 - y1)
@@ -233,3 +233,4 @@ if __name__ == "__main__":
         print("Usage: python generate_monthly_report.py <year> <month> [out]")
         raise SystemExit(1)
     make_monthly_report(int(sys.argv[1]), int(sys.argv[2]), sys.argv[3] if len(sys.argv) > 3 else "monthly_report.png")
+_report.png")

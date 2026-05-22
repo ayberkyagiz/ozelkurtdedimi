@@ -17,7 +17,7 @@ TZ = ZoneInfo("America/New_York")
 
 STATE_FILE = "state.json"
 HISTORY_FILE = "history.csv"
-UA = "ozelkurtdedimi-bot/10.0"
+UA = "ozelkurtdedimi-bot/11.0"
 
 AYLAR_TR = {
     1: "Ocak", 2: "Şubat", 3: "Mart", 4: "Nisan", 5: "Mayıs", 6: "Haziran",
@@ -250,7 +250,7 @@ def previous_month(today: date) -> tuple[str, int, int]:
 
 def monthly_stats_text(key: str, stats: dict) -> str:
     return (
-        f'Kasım 2023\'ten bu yana aylık "Kürt" kelimesi kullanım oranı grafiği güncellendi.\n\n'
+        f'Mayıs 2026\'dan bu yana aylık "Kürt" kelimesi kullanım oranı grafiği güncellendi.\n\n'
         f"{key} ayı özeti:\n\n"
         f"Konuştuğu gün sayısı: {stats['spoken_days']}\n"
         f'"Kürt" dediği konuşma günü: {stats["kurt_yes"]}\n'
@@ -347,22 +347,24 @@ def parse_article_date(soup: BeautifulSoup) -> datetime | None:
     return None
 
 
-def ozel_anchor_text(text: str) -> bool:
+def lider_anchor_text(text: str) -> bool:
     t = (text or "").lower()
     return any(
         marker in t
         for marker in (
-            "özgür özel",
-            "ozgur ozel",
-            "chp lideri özel",
-            "chp lideri ozel",
-            "genel başkanı özel",
-            "genel baskani ozel",
+            "kemal kılıçdaroğlu",
+            "kemal kilicdaroglu",
+            "chp lideri kılıçdaroğlu",
+            "chp lideri kilicdaroglu",
+            "genel başkanı kılıçdaroğlu",
+            "genel baskani kilicdaroglu",
+            "kılıçdaroğlu",
+            "kilicdaroglu",
         )
     )
 
 
-def find_ozel_links_for_date(target: date, max_pages: int = 8) -> list[str]:
+def find_lider_links_for_date(target: date, max_pages: int = 8) -> list[str]:
     target_token = chp_date_str(target)
     seen = set()
     matches = []
@@ -375,7 +377,7 @@ def find_ozel_links_for_date(target: date, max_pages: int = 8) -> list[str]:
             if target_token not in text:
                 continue
             page_had_target = True
-            if not ozel_anchor_text(text):
+            if not lider_anchor_text(text):
                 continue
             href = normalize_url(urljoin(BASE, a.get("href") or ""))
             if href.startswith(BASE) and href not in seen:
@@ -451,7 +453,7 @@ def main():
     # -------------------------
     # CHP kontrol
     # -------------------------
-    article_urls = find_ozel_links_for_date(today)
+    article_urls = find_lider_links_for_date(today)
     spoke_now = bool(article_urls)
     kurt_now = False
     source_url = article_urls[0] if article_urls else None
@@ -474,7 +476,7 @@ def main():
     if not spoke_now:
         main_text = (
             f"{date_str}\n"
-            "Özgür Özel Kürt dedi mi? Konuşmadı."
+            "Kemal Kılıçdaroğlu Kürt dedi mi? Konuşmadı."
         )
         print("Posting (no speech) tweet…")
         try_tweet_simple(main_text, "No speech tweet")
@@ -484,7 +486,7 @@ def main():
         streak = next_spoken_streak(state, "dedi")
         main_text = (
             f"{date_str}\n"
-            "Özgür Özel Kürt dedi mi? Dedi.\n\n"
+            "Kemal Kılıçdaroğlu Kürt dedi mi? Dedi.\n\n"
             f"{streak_text('dedi', streak)}\n\n"
             f"Kaynak:\n{source_url or GUNDEM_URL}"
         )
@@ -496,7 +498,7 @@ def main():
         streak = next_spoken_streak(state, "demedi")
         main_text = (
             f"{date_str}\n"
-            "Özgür Özel Kürt dedi mi? Demedi.\n\n"
+            "Kemal Kılıçdaroğlu Kürt dedi mi? Demedi.\n\n"
             f"{streak_text('demedi', streak)}"
         )
         print("Posting (kurt NOT said) tweet…")

@@ -54,7 +54,7 @@ def make_card(sonuc, streak, tarih, out="card.png"):
     draw.rectangle([60, 86, W - 60, 87], fill=GREY_BORDER)
 
     f_question = load(fonts["light"], 30)
-    draw.text((60, 122), 'Özgür Özel bugün "Kürt" dedi mi?', font=f_question, fill=GREY_MID)
+    draw.text((60, 122), 'Kemal Kılıçdaroğlu bugün "Kürt" dedi mi?', font=f_question, fill=GREY_MID)
 
     f_result = load(fonts["bold"], 108)
     if sonuc == "demedi":

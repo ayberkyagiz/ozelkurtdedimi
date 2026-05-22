@@ -1,9 +1,7 @@
 name: twitterbot
 on:
   schedule:
-    - cron: "0 11 * * *"   # 14:00 TRT
-    - cron: "0 16 * * *"   # 19:00 TRT
-    - cron: "59 20 * * *"  # 23:59 TRT
+    - cron: "0 20 * * *"   # 23:00 TRT (UTC+3)
   workflow_dispatch:
     inputs:
       force_date:
@@ -11,7 +9,11 @@ on:
         required: false
         default: ""
       force_slot:
-        description: "Slot override: t14 / t19 / t2359"
+        description: "Slot override: t2300"
+        required: false
+        default: ""
+      force_monthly:
+        description: "Monthly report override (YYYY-MM)"
         required: false
         default: ""
 permissions:
@@ -36,7 +38,13 @@ jobs:
           X_ACCESS_TOKEN_SECRET: ${{ secrets.X_ACCESS_TOKEN_SECRET }}
           FORCE_DATE: ${{ inputs.force_date }}
           FORCE_SLOT: ${{ inputs.force_slot }}
-        run: python bot.py
+          FORCE_MONTHLY: ${{ inputs.force_monthly }}
+        run: |
+          if [ -n "$FORCE_MONTHLY" ]; then
+            python monthly_post.py
+          else
+            python bot.py
+          fi
       - name: Commit state/history
         run: |
           git config user.name "github-actions"
