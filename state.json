@@ -1,5 +1,12 @@
 {
-  "daily": {},
+  "daily": {
+    "2026-05-22": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
+    }
+  },
   "streak": 0,
   "streak_result": "",
   "last_monthly_post": "",
