@@ -233,4 +233,3 @@ if __name__ == "__main__":
         print("Usage: python generate_monthly_report.py <year> <month> [out]")
         raise SystemExit(1)
     make_monthly_report(int(sys.argv[1]), int(sys.argv[2]), sys.argv[3] if len(sys.argv) > 3 else "monthly_report.png")
-_report.png")
