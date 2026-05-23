@@ -211,3 +211,6 @@ LICENSE.txt
 gitignore.txt
 K Ü R T.png
 push_to_github.ps1
+
+# Yerel Dropbox/araç kopyaları
+push_to_github.bat
