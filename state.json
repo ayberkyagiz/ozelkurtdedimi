@@ -47,10 +47,16 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-05-30": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglunun-halkla-bayramlasma-programinda-yaptigi-konusma"
     }
   },
-  "streak": 0,
-  "streak_result": "",
+  "streak": 1,
+  "streak_result": "demedi",
   "last_monthly_post": "",
   "last_weekly_post": ""
 }
