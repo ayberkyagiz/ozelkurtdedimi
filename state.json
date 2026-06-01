@@ -59,10 +59,16 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-06-01": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
     }
   },
   "streak": 1,
   "streak_result": "demedi",
-  "last_monthly_post": "",
+  "last_monthly_post": "2026-05",
   "last_weekly_post": "2026-05-31"
 }
