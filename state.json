@@ -65,6 +65,12 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-06-02": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
     }
   },
   "streak": 1,
