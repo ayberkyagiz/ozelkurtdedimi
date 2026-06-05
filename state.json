@@ -83,9 +83,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-muratpasa-belediye-baskani-umit-uysali-kabul-etti"
+    },
+    "2026-06-05": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-myk-toplantisina-baskanlik-etti-1"
     }
   },
-  "streak": 2,
+  "streak": 3,
   "streak_result": "demedi",
   "last_monthly_post": "2026-05",
   "last_weekly_post": "2026-05-31"
