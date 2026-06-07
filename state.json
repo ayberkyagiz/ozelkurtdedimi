@@ -95,10 +95,16 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-06-07": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglundan-fenerbahce-baskani-aziz-yildirima-tebrik-mesaji"
     }
   },
-  "streak": 3,
+  "streak": 4,
   "streak_result": "demedi",
   "last_monthly_post": "2026-05",
-  "last_weekly_post": "2026-05-31"
+  "last_weekly_post": "2026-06-07"
 }
