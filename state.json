@@ -107,10 +107,16 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-tum-orgutumuzu-yarinki-grup-toplantimizda-tek-yurek-olmaya-davet-ediyorum"
+    },
+    "2026-06-09": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": true,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-benim-koltuk-derdim-yok-ahlakli-erdemli-bir-kurultayi-elbette-yapacagiz"
     }
   },
-  "streak": 5,
-  "streak_result": "demedi",
+  "streak": 1,
+  "streak_result": "dedi",
   "last_monthly_post": "2026-05",
   "last_weekly_post": "2026-06-07"
 }
