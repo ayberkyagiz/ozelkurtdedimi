@@ -113,6 +113,12 @@
       "spoke_any": true,
       "kurt_any": true,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-benim-koltuk-derdim-yok-ahlakli-erdemli-bir-kurultayi-elbette-yapacagiz"
+    },
+    "2026-06-10": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
     }
   },
   "streak": 1,
