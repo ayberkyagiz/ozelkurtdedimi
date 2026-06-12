@@ -125,9 +125,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-chp-parti-meclisi-toplantisina-baskanlik-etti"
+    },
+    "2026-06-12": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-kemal-kilicdaroglu-lgsye-girecek-ogrencilere-basarilar-diledi"
     }
   },
-  "streak": 1,
+  "streak": 2,
   "streak_result": "demedi",
   "last_monthly_post": "2026-05",
   "last_weekly_post": "2026-06-07"
