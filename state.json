@@ -143,9 +143,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglundan-ozsen-madencilik-scilerine-ve-ozel-sektor-ogretmenlerine-destek"
+    },
+    "2026-06-15": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-magdur-aileyi-makaminda-kabul-etti-chp-sikayetinden-vazgecti"
     }
   },
-  "streak": 3,
+  "streak": 4,
   "streak_result": "demedi",
   "last_monthly_post": "2026-05",
   "last_weekly_post": "2026-06-14"
