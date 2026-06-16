@@ -149,9 +149,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-magdur-aileyi-makaminda-kabul-etti-chp-sikayetinden-vazgecti"
+    },
+    "2026-06-16": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-kemal-kilicdaroglundan-muharrem-ayi-mesaji"
     }
   },
-  "streak": 4,
+  "streak": 5,
   "streak_result": "demedi",
   "last_monthly_post": "2026-05",
   "last_weekly_post": "2026-06-14"
