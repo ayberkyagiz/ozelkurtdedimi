@@ -155,6 +155,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-kemal-kilicdaroglundan-muharrem-ayi-mesaji"
+    },
+    "2026-06-17": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
     }
   },
   "streak": 5,
