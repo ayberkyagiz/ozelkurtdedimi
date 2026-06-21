@@ -179,10 +179,16 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-dokunulmazliklarin-kaldirilmasi-sureci-ve-carpitilmak-stenen-gercekler"
+    },
+    "2026-06-21": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
     }
   },
   "streak": 6,
   "streak_result": "demedi",
   "last_monthly_post": "2026-05",
-  "last_weekly_post": "2026-06-14"
+  "last_weekly_post": "2026-06-21"
 }
