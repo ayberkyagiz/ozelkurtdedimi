@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-05-24": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-05-25": {
       "done": true,
       "spoke_any": false,
@@ -181,6 +175,12 @@
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-fevzi-tunc-turelinin-cenaze-torenine-katildi"
     },
     "2026-06-23": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
+    },
+    "2026-06-24": {
       "done": true,
       "spoke_any": false,
       "kurt_any": false,
