@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-05-28": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-05-29": {
       "done": true,
       "spoke_any": false,
@@ -185,10 +179,16 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-06-28": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
     }
   },
   "streak": 9,
   "streak_result": "demedi",
   "last_monthly_post": "2026-05",
-  "last_weekly_post": "2026-06-21"
+  "last_weekly_post": "2026-06-28"
 }
