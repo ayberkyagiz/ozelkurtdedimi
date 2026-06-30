@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-05-30": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglunun-halkla-bayramlasma-programinda-yaptigi-konusma"
-    },
     "2026-05-31": {
       "done": true,
       "spoke_any": false,
@@ -185,9 +179,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-stanbuldan-ankaraya-donerken-vatandaslarla-bir-araya-geldi"
+    },
+    "2026-06-30": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-sehit-cavus-abdurrahman-hilalin-ailesine-bassagligi-diledi"
     }
   },
-  "streak": 10,
+  "streak": 11,
   "streak_result": "demedi",
   "last_monthly_post": "2026-05",
   "last_weekly_post": "2026-06-28"
