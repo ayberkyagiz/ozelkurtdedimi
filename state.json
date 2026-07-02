@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-06-01": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-06-02": {
       "done": true,
       "spoke_any": false,
@@ -185,9 +179,15 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-07-02": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-turkiye-nato-uyesidir-fakat-natonun-leri-karakolu-degildir"
     }
   },
-  "streak": 11,
+  "streak": 12,
   "streak_result": "demedi",
   "last_monthly_post": "2026-06",
   "last_weekly_post": "2026-06-28"
