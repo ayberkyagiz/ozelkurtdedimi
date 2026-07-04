@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-06-03": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-06-04": {
       "done": true,
       "spoke_any": true,
@@ -185,6 +179,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglundan-komedyen-goktasin-gozaltina-alinmasina-tepki-deniz-ozgur-olmali"
+    },
+    "2026-07-04": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
     }
   },
   "streak": 13,
