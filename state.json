@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-06-08": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-tum-orgutumuzu-yarinki-grup-toplantimizda-tek-yurek-olmaya-davet-ediyorum"
-    },
     "2026-06-09": {
       "done": true,
       "spoke_any": true,
@@ -181,6 +175,12 @@
       "last_url": null
     },
     "2026-07-08": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
+    },
+    "2026-07-09": {
       "done": true,
       "spoke_any": false,
       "kurt_any": false,
