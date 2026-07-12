@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-06-11": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-chp-parti-meclisi-toplantisina-baskanlik-etti"
-    },
     "2026-06-12": {
       "done": true,
       "spoke_any": true,
@@ -185,10 +179,16 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-07-12": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/necdet-sarac-kilicdaroglunu-dovmek-ya-da-dusman-hukukunu-buyutmek"
     }
   },
-  "streak": 15,
+  "streak": 16,
   "streak_result": "demedi",
   "last_monthly_post": "2026-06",
-  "last_weekly_post": "2026-07-05"
+  "last_weekly_post": "2026-07-12"
 }
