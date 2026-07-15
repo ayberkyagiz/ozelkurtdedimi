@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-06-14": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglundan-ozsen-madencilik-scilerine-ve-ozel-sektor-ogretmenlerine-destek"
-    },
     "2026-06-15": {
       "done": true,
       "spoke_any": true,
@@ -185,6 +179,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-kemal-kilicdaroglu-chpnin-bolunmesi-erdoganin-sine-yarar"
+    },
+    "2026-07-15": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
     }
   },
   "streak": 17,
