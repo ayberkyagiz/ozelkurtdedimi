@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-06-16": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-kemal-kilicdaroglundan-muharrem-ayi-mesaji"
-    },
     "2026-06-17": {
       "done": true,
       "spoke_any": false,
@@ -185,9 +179,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-kemal-kilicdaroglundan-cumhuriyet-degerlerini-korumak-cin-12-maddelik-uyari"
+    },
+    "2026-07-17": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-olcay-baykalin-cenaze-torenine-katildi"
     }
   },
-  "streak": 18,
+  "streak": 19,
   "streak_result": "demedi",
   "last_monthly_post": "2026-06",
   "last_weekly_post": "2026-07-12"
