@@ -1,17 +1,5 @@
 {
   "daily": {
-    "2026-06-23": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
-    "2026-06-24": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-06-25": {
       "done": true,
       "spoke_any": true,
@@ -185,9 +173,15 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-07-25": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-biz-mustafa-kemalin-nonunun-ecevitin-baykalin-partisiyiz"
     }
   },
-  "streak": 19,
+  "streak": 20,
   "streak_result": "demedi",
   "last_monthly_post": "2026-06",
   "last_weekly_post": "2026-07-19"
