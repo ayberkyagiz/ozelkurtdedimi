@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-06-25": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-22-donem-balikesir-milletvekili-orhan-surun-cenaze-torenine-katildi"
-    },
     "2026-06-26": {
       "done": true,
       "spoke_any": true,
@@ -179,10 +173,16 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-biz-mustafa-kemalin-nonunun-ecevitin-baykalin-partisiyiz"
+    },
+    "2026-07-26": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
     }
   },
   "streak": 20,
   "streak_result": "demedi",
   "last_monthly_post": "2026-06",
-  "last_weekly_post": "2026-07-19"
+  "last_weekly_post": "2026-07-26"
 }
