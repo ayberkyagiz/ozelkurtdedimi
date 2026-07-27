@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-06-26": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-kemal-kilicdaroglundan-kadir-nanir-cin-bassagligi-mesaji"
-    },
     "2026-06-27": {
       "done": true,
       "spoke_any": false,
@@ -175,6 +169,12 @@
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-biz-mustafa-kemalin-nonunun-ecevitin-baykalin-partisiyiz"
     },
     "2026-07-26": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
+    },
+    "2026-07-27": {
       "done": true,
       "spoke_any": false,
       "kurt_any": false,
