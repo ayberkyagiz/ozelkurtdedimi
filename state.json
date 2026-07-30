@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-06-29": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-stanbuldan-ankaraya-donerken-vatandaslarla-bir-araya-geldi"
-    },
     "2026-06-30": {
       "done": true,
       "spoke_any": true,
@@ -179,9 +173,15 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-07-30": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-kemal-kilicdaroglu-kadin-kollari-tarafindan-genel-merkezde-kurulan-universite-tercih-merkezini-ziyaret-etti"
     }
   },
-  "streak": 20,
+  "streak": 21,
   "streak_result": "demedi",
   "last_monthly_post": "2026-06",
   "last_weekly_post": "2026-07-26"
