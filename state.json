@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-07-03": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglundan-komedyen-goktasin-gozaltina-alinmasina-tepki-deniz-ozgur-olmali"
-    },
     "2026-07-04": {
       "done": true,
       "spoke_any": false,
@@ -179,10 +173,16 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-08-03": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": true,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-kemal-kilicdaroglundan-cerceve-yasa-aciklamasi-terorun-bitmesi-ve-uniter-devlet-yapisi-kirmizi-cizgimizdir"
     }
   },
-  "streak": 22,
-  "streak_result": "demedi",
+  "streak": 1,
+  "streak_result": "dedi",
   "last_monthly_post": "2026-07",
   "last_weekly_post": "2026-08-02"
 }
