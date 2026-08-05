@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-07-05": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-irmak-canpolat-ve-aykut-ergun-merter-ciftinin-nikah-sahitligi-yapti"
-    },
     "2026-07-06": {
       "done": true,
       "spoke_any": true,
@@ -179,9 +173,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-hesap-sormaktan-da-hesap-vermekten-de-cekinmeyiz"
+    },
+    "2026-08-05": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-chp-spor-kurulu-uyeleri-ile-bir-araya-geldi"
     }
   },
-  "streak": 1,
+  "streak": 2,
   "streak_result": "demedi",
   "last_monthly_post": "2026-07",
   "last_weekly_post": "2026-08-02"
