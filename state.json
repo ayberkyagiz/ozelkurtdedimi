@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-07-08": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-07-09": {
       "done": true,
       "spoke_any": false,
@@ -175,6 +169,12 @@
       "last_url": null
     },
     "2026-08-07": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
+    },
+    "2026-08-08": {
       "done": true,
       "spoke_any": false,
       "kurt_any": false,
