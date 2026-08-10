@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-07-10": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-07-11": {
       "done": true,
       "spoke_any": false,
@@ -179,9 +173,15 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-08-10": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglundan-terorsuz-turkiye-aciklamasi-surece-tereddutsuz-katki-verecegiz"
     }
   },
-  "streak": 2,
+  "streak": 3,
   "streak_result": "demedi",
   "last_monthly_post": "2026-07",
   "last_weekly_post": "2026-08-09"
