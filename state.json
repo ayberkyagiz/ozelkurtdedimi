@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-07-16": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-kemal-kilicdaroglundan-cumhuriyet-degerlerini-korumak-cin-12-maddelik-uyari"
-    },
     "2026-07-17": {
       "done": true,
       "spoke_any": true,
@@ -179,10 +173,16 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-08-16": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
     }
   },
   "streak": 4,
   "streak_result": "demedi",
   "last_monthly_post": "2026-07",
-  "last_weekly_post": "2026-08-09"
+  "last_weekly_post": "2026-08-16"
 }
