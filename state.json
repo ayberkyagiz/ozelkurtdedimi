@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-07-18": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-07-19": {
       "done": true,
       "spoke_any": false,
@@ -179,9 +173,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglundan-17-agustos-mesaji-deprem-kader-degildir-tedbir-almak-zorundayiz"
+    },
+    "2026-08-18": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-kemal-kilicdaroglundan-yks-mesaji-bir-sinav-sonucu-geleceginizi-belirlemez-hayallerinizden-vazgecmeyin"
     }
   },
-  "streak": 5,
+  "streak": 6,
   "streak_result": "demedi",
   "last_monthly_post": "2026-07",
   "last_weekly_post": "2026-08-16"
