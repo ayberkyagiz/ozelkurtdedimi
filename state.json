@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-07-19": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-07-20": {
       "done": true,
       "spoke_any": false,
@@ -179,6 +173,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-kemal-kilicdaroglundan-yks-mesaji-bir-sinav-sonucu-geleceginizi-belirlemez-hayallerinizden-vazgecmeyin"
+    },
+    "2026-08-19": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
     }
   },
   "streak": 6,
