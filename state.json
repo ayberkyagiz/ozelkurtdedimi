@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-07-21": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-07-22": {
       "done": true,
       "spoke_any": false,
@@ -179,9 +173,15 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-08-21": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglundan-netenyahuya-sert-tepki"
     }
   },
-  "streak": 6,
+  "streak": 7,
   "streak_result": "demedi",
   "last_monthly_post": "2026-07",
   "last_weekly_post": "2026-08-16"
