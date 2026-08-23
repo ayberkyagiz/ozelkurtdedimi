@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-07-23": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-07-25": {
       "done": true,
       "spoke_any": true,
@@ -179,10 +173,16 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-kemal-kilicdaroglu-2-kardes-gocerler-yoruk-etkinligine-katildi-toroslarin-cadiri-turkiyenin-umududur"
+    },
+    "2026-08-23": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
     }
   },
   "streak": 8,
   "streak_result": "demedi",
   "last_monthly_post": "2026-07",
-  "last_weekly_post": "2026-08-16"
+  "last_weekly_post": "2026-08-23"
 }
