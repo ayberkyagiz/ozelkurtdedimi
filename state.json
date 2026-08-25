@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-07-25": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-biz-mustafa-kemalin-nonunun-ecevitin-baykalin-partisiyiz"
-    },
     "2026-07-26": {
       "done": true,
       "spoke_any": false,
@@ -185,9 +179,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-kemal-kilicdaroglunun-mevlid-kandili-mesaji"
+    },
+    "2026-08-25": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-gorkemli-bir-kurultayla-chpyi-tekrar-kurulusundaki-ahlaki-kodlara-oturtacagiz"
     }
   },
-  "streak": 9,
+  "streak": 10,
   "streak_result": "demedi",
   "last_monthly_post": "2026-07",
   "last_weekly_post": "2026-08-23"
