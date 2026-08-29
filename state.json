@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-07-29": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-07-30": {
       "done": true,
       "spoke_any": true,
@@ -175,6 +169,12 @@
       "last_url": "https://chp.org.tr/haberler/chp-lideri-kemal-kilicdaroglundan-suriye-aciklamasi-turklerin-kurtlerin-ve-araplarin-ortak-gelecegi-baristadir"
     },
     "2026-08-28": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
+    },
+    "2026-08-29": {
       "done": true,
       "spoke_any": false,
       "kurt_any": false,
