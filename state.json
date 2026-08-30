@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-07-30": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-kemal-kilicdaroglu-kadin-kollari-tarafindan-genel-merkezde-kurulan-universite-tercih-merkezini-ziyaret-etti"
-    },
     "2026-07-31": {
       "done": true,
       "spoke_any": false,
@@ -179,10 +173,16 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-08-30": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": true,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-kemal-kilicdaroglunun-zafer-bayrami-mesaji-bagimsizligimizin-en-buyuk-guvencesi-milletimizin-birligidir"
     }
   },
-  "streak": 1,
+  "streak": 2,
   "streak_result": "dedi",
   "last_monthly_post": "2026-07",
-  "last_weekly_post": "2026-08-23"
+  "last_weekly_post": "2026-08-30"
 }
