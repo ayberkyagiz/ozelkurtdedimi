@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-07-31": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-08-01": {
       "done": true,
       "spoke_any": true,
@@ -179,10 +173,16 @@
       "spoke_any": true,
       "kurt_any": true,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-kemal-kilicdaroglunun-zafer-bayrami-mesaji-bagimsizligimizin-en-buyuk-guvencesi-milletimizin-birligidir"
+    },
+    "2026-08-31": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-kktc-cumhurbaskani-tufan-erhurmani-aradi"
     }
   },
-  "streak": 2,
-  "streak_result": "dedi",
+  "streak": 1,
+  "streak_result": "demedi",
   "last_monthly_post": "2026-07",
   "last_weekly_post": "2026-08-30"
 }
