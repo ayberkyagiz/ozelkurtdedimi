@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-08-01": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-tugce-bekmez-ile-sinan-okun-nikah-sahitligini-yapti"
-    },
     "2026-08-02": {
       "done": true,
       "spoke_any": false,
@@ -179,10 +173,16 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-kktc-cumhurbaskani-tufan-erhurmani-aradi"
+    },
+    "2026-09-01": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
     }
   },
   "streak": 1,
   "streak_result": "demedi",
-  "last_monthly_post": "2026-07",
+  "last_monthly_post": "2026-08",
   "last_weekly_post": "2026-08-30"
 }
