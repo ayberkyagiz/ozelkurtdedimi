@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-08-03": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": true,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-kemal-kilicdaroglundan-cerceve-yasa-aciklamasi-terorun-bitmesi-ve-uniter-devlet-yapisi-kirmizi-cizgimizdir"
-    },
     "2026-08-04": {
       "done": true,
       "spoke_any": true,
@@ -179,9 +173,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-zmir-esnaf-odalari-birliginde-konustu-mutlaka-bir-esnaf-bakanligi-kurulmali"
+    },
+    "2026-09-03": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-ddianameleri-bir-an-once-yazin-adaletsizligi-beslemeyin"
     }
   },
-  "streak": 2,
+  "streak": 3,
   "streak_result": "demedi",
   "last_monthly_post": "2026-08",
   "last_weekly_post": "2026-08-30"
