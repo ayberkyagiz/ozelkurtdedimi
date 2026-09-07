@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-08-07": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-08-08": {
       "done": true,
       "spoke_any": false,
@@ -179,9 +173,15 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-09-07": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-dem-parti-es-genel-baskanlari-bakirhan-ve-hatimogullarini-tebrik-etti"
     }
   },
-  "streak": 4,
+  "streak": 5,
   "streak_result": "demedi",
   "last_monthly_post": "2026-08",
   "last_weekly_post": "2026-09-06"
