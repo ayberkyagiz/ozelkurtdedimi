@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-08-21": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglundan-netenyahuya-sert-tepki"
-    },
     "2026-08-22": {
       "done": true,
       "spoke_any": true,
@@ -175,6 +169,12 @@
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-yigit-acar-ile-tugce-doganin-nikah-sahitligini-yapti"
     },
     "2026-09-20": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
+    },
+    "2026-09-21": {
       "done": true,
       "spoke_any": false,
       "kurt_any": false,
