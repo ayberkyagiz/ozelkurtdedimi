@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-08-22": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-kemal-kilicdaroglu-2-kardes-gocerler-yoruk-etkinligine-katildi-toroslarin-cadiri-turkiyenin-umududur"
-    },
     "2026-08-23": {
       "done": true,
       "spoke_any": false,
@@ -179,9 +173,15 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-09-22": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/deniz-demir-genel-baskanimiz-kemal-kilicdaroglu-turgutludaki-okul-saldirisi-cin-heyet-gorevlendirdi"
     }
   },
-  "streak": 12,
+  "streak": 13,
   "streak_result": "demedi",
   "last_monthly_post": "2026-08",
   "last_weekly_post": "2026-09-20"
