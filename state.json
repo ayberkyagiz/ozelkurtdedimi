@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-08-24": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-kemal-kilicdaroglunun-mevlid-kandili-mesaji"
-    },
     "2026-08-25": {
       "done": true,
       "spoke_any": true,
@@ -179,9 +173,15 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-09-24": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-kemal-kilicdaroglu-alevi-orgutlerinin-genel-baskanlariyla-bir-araya-geldi"
     }
   },
-  "streak": 13,
+  "streak": 14,
   "streak_result": "demedi",
   "last_monthly_post": "2026-08",
   "last_weekly_post": "2026-09-20"
