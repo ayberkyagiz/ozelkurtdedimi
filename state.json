@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-08-25": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-gorkemli-bir-kurultayla-chpyi-tekrar-kurulusundaki-ahlaki-kodlara-oturtacagiz"
-    },
     "2026-08-26": {
       "done": true,
       "spoke_any": true,
@@ -179,9 +173,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-kemal-kilicdaroglu-alevi-orgutlerinin-genel-baskanlariyla-bir-araya-geldi"
+    },
+    "2026-09-25": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-kemal-kilicdaroglu-artik-sozun-bittigi-yerdeyiz-emeklilerin-hakli-talepleri-artik-daha-fazla-ertelenemez"
     }
   },
-  "streak": 14,
+  "streak": 15,
   "streak_result": "demedi",
   "last_monthly_post": "2026-08",
   "last_weekly_post": "2026-09-20"
