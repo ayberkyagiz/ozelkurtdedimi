@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-08-26": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": true,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-kemal-kilicdaroglundan-suriye-aciklamasi-turklerin-kurtlerin-ve-araplarin-ortak-gelecegi-baristadir"
-    },
     "2026-08-28": {
       "done": true,
       "spoke_any": false,
@@ -179,9 +173,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-kemal-kilicdaroglu-artik-sozun-bittigi-yerdeyiz-emeklilerin-hakli-talepleri-artik-daha-fazla-ertelenemez"
+    },
+    "2026-09-26": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-kim-kul-hakki-yiyorsa-karsisinda-cumhuriyet-halk-partisini-bulacaktir"
     }
   },
-  "streak": 15,
+  "streak": 16,
   "streak_result": "demedi",
   "last_monthly_post": "2026-08",
   "last_weekly_post": "2026-09-20"
