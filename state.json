@@ -179,10 +179,16 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-kim-kul-hakki-yiyorsa-karsisinda-cumhuriyet-halk-partisini-bulacaktir"
+    },
+    "2026-09-27": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-milletin-emaneti-stifa-dilekceleriyle-hesabi-kapatilacak-bir-emanet-degildir"
     }
   },
-  "streak": 16,
+  "streak": 17,
   "streak_result": "demedi",
   "last_monthly_post": "2026-08",
-  "last_weekly_post": "2026-09-20"
+  "last_weekly_post": "2026-09-27"
 }
