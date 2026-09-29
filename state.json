@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-08-28": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-08-29": {
       "done": true,
       "spoke_any": false,
@@ -185,9 +179,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-milletin-emaneti-stifa-dilekceleriyle-hesabi-kapatilacak-bir-emanet-degildir"
+    },
+    "2026-09-28": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/deniz-demir-sayin-kemal-kilicdaroglu-demokrasinin-tikanan-damarlarini-acan-birlestirici-bir-radenin-simgesidir"
     }
   },
-  "streak": 17,
+  "streak": 18,
   "streak_result": "demedi",
   "last_monthly_post": "2026-08",
   "last_weekly_post": "2026-09-27"
