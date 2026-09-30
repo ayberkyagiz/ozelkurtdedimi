@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-08-30": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": true,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-kemal-kilicdaroglunun-zafer-bayrami-mesaji-bagimsizligimizin-en-buyuk-guvencesi-milletimizin-birligidir"
-    },
     "2026-08-31": {
       "done": true,
       "spoke_any": true,
@@ -181,6 +175,12 @@
       "last_url": "https://chp.org.tr/haberler/deniz-demir-sayin-kemal-kilicdaroglu-demokrasinin-tikanan-damarlarini-acan-birlestirici-bir-radenin-simgesidir"
     },
     "2026-09-29": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
+    },
+    "2026-09-30": {
       "done": true,
       "spoke_any": false,
       "kurt_any": false,
