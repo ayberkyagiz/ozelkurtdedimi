@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-09-01": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-09-02": {
       "done": true,
       "spoke_any": true,
@@ -185,9 +179,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-28-donem-5-yasama-yili-acilis-programina-katildi"
+    },
+    "2026-10-02": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-abdullah-ozyigitin-ailesini-ziyaret-etti"
     }
   },
-  "streak": 19,
+  "streak": 20,
   "streak_result": "demedi",
   "last_monthly_post": "2026-09",
   "last_weekly_post": "2026-09-27"
