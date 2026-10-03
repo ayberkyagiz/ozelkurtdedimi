@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-09-02": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-zmir-esnaf-odalari-birliginde-konustu-mutlaka-bir-esnaf-bakanligi-kurulmali"
-    },
     "2026-09-03": {
       "done": true,
       "spoke_any": true,
@@ -185,9 +179,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-abdullah-ozyigitin-ailesini-ziyaret-etti"
+    },
+    "2026-10-03": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-staj-ve-ciraklik-magduriyetini-gidermek-benim-boynumun-borcudur"
     }
   },
-  "streak": 20,
+  "streak": 21,
   "streak_result": "demedi",
   "last_monthly_post": "2026-09",
   "last_weekly_post": "2026-09-27"
