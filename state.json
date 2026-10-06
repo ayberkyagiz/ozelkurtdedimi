@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-09-05": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-09-06": {
       "done": true,
       "spoke_any": false,
@@ -185,9 +179,15 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-10-06": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-kemal-kilicdaroglu-neden-yoksulluk-var-emekli-perisan-asgari-ucret-cok-dusuk-cunku-devlet-soyuluyor"
     }
   },
-  "streak": 21,
+  "streak": 22,
   "streak_result": "demedi",
   "last_monthly_post": "2026-09",
   "last_weekly_post": "2026-10-04"
