@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-09-06": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-09-07": {
       "done": true,
       "spoke_any": true,
@@ -185,9 +179,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-kemal-kilicdaroglu-neden-yoksulluk-var-emekli-perisan-asgari-ucret-cok-dusuk-cunku-devlet-soyuluyor"
+    },
+    "2026-10-07": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-sehit-polis-memuru-ahmet-turkogluna-allahtan-rahmet-diliyorum"
     }
   },
-  "streak": 22,
+  "streak": 23,
   "streak_result": "demedi",
   "last_monthly_post": "2026-09",
   "last_weekly_post": "2026-10-04"
