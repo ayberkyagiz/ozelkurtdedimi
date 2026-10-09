@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-09-07": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-dem-parti-es-genel-baskanlari-bakirhan-ve-hatimogullarini-tebrik-etti"
-    },
     "2026-09-08": {
       "done": true,
       "spoke_any": true,
@@ -185,6 +179,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-sehit-polis-memuru-ahmet-turkogluna-allahtan-rahmet-diliyorum"
+    },
+    "2026-10-08": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
     }
   },
   "streak": 23,
