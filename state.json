@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-09-13": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-09-14": {
       "done": true,
       "spoke_any": true,
@@ -185,9 +179,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-kemal-kilicdaroglu-saibeli-adamin-chpde-yeri-yoktur"
+    },
+    "2026-10-14": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-tusad-baskani-ozan-direni-kabul-etti"
     }
   },
-  "streak": 1,
+  "streak": 2,
   "streak_result": "demedi",
   "last_monthly_post": "2026-09",
   "last_weekly_post": "2026-10-11"
