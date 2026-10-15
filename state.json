@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-09-14": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-kilicdaroglu-ktidar-yapamiyorsa-okullarin-temizligini-de-bir-ogun-sicak-yemek-projesini-de-biz-yapacagiz"
-    },
     "2026-09-15": {
       "done": true,
       "spoke_any": false,
@@ -185,9 +179,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-tusad-baskani-ozan-direni-kabul-etti"
+    },
+    "2026-10-15": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-mke-ankaragucu-baskani-lhami-alparslani-kabul-etti"
     }
   },
-  "streak": 2,
+  "streak": 3,
   "streak_result": "demedi",
   "last_monthly_post": "2026-09",
   "last_weekly_post": "2026-10-11"
