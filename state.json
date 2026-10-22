@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-09-21": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-09-22": {
       "done": true,
       "spoke_any": true,
@@ -185,9 +179,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglundan-abye-libya-tepkisi-somurge-caginda-degiliz"
+    },
+    "2026-10-22": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-televizyonlarin-ankara-temsilcileriyle-bir-araya-geldi"
     }
   },
-  "streak": 8,
+  "streak": 9,
   "streak_result": "demedi",
   "last_monthly_post": "2026-09",
   "last_weekly_post": "2026-10-18"
