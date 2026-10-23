@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-09-22": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/deniz-demir-genel-baskanimiz-kemal-kilicdaroglu-turgutludaki-okul-saldirisi-cin-heyet-gorevlendirdi"
-    },
     "2026-09-23": {
       "done": true,
       "spoke_any": false,
@@ -185,9 +179,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-televizyonlarin-ankara-temsilcileriyle-bir-araya-geldi"
+    },
+    "2026-10-23": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-kemal-kilicdaroglu-luksemburg-temsilciler-meclisi-baskani-claude-wiseler-baskanligindaki-heyet-ile-gorustu"
     }
   },
-  "streak": 9,
+  "streak": 10,
   "streak_result": "demedi",
   "last_monthly_post": "2026-09",
   "last_weekly_post": "2026-10-18"
