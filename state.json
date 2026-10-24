@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-09-23": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-09-24": {
       "done": true,
       "spoke_any": true,
@@ -185,9 +179,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-lideri-kemal-kilicdaroglu-luksemburg-temsilciler-meclisi-baskani-claude-wiseler-baskanligindaki-heyet-ile-gorustu"
+    },
+    "2026-10-24": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-gaziantepte-genclere-seslendi-ataturkculuk-gelecegi-demokrasiyle-nsa-etmektir"
     }
   },
-  "streak": 10,
+  "streak": 11,
   "streak_result": "demedi",
   "last_monthly_post": "2026-09",
   "last_weekly_post": "2026-10-18"
