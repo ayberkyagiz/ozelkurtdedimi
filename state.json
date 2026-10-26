@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-09-25": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-kemal-kilicdaroglu-artik-sozun-bittigi-yerdeyiz-emeklilerin-hakli-talepleri-artik-daha-fazla-ertelenemez"
-    },
     "2026-09-26": {
       "done": true,
       "spoke_any": true,
@@ -181,6 +175,12 @@
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-gaziantepte-genclere-seslendi-ataturkculuk-gelecegi-demokrasiyle-nsa-etmektir"
     },
     "2026-10-25": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
+    },
+    "2026-10-26": {
       "done": true,
       "spoke_any": false,
       "kurt_any": false,
