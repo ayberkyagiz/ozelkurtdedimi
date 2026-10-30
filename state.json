@@ -1,17 +1,5 @@
 {
   "daily": {
-    "2026-09-28": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/deniz-demir-sayin-kemal-kilicdaroglu-demokrasinin-tikanan-damarlarini-acan-birlestirici-bir-radenin-simgesidir"
-    },
-    "2026-09-29": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-09-30": {
       "done": true,
       "spoke_any": false,
@@ -181,6 +169,12 @@
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglundan-stanbul-barosu-baskani-umit-kocasakala-tebrik-telefonu"
     },
     "2026-10-28": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
+    },
+    "2026-10-30": {
       "done": true,
       "spoke_any": false,
       "kurt_any": false,
