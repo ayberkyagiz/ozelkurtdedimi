@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-10-01": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-28-donem-5-yasama-yili-acilis-programina-katildi"
-    },
     "2026-10-02": {
       "done": true,
       "spoke_any": true,
@@ -179,10 +173,16 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-eren-erol-ile-yaren-koseoglunun-nikah-sahitligini-yapti"
+    },
+    "2026-11-01": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
     }
   },
   "streak": 13,
   "streak_result": "demedi",
-  "last_monthly_post": "2026-09",
-  "last_weekly_post": "2026-10-25"
+  "last_monthly_post": "2026-10",
+  "last_weekly_post": "2026-11-01"
 }
