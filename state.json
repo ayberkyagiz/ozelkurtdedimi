@@ -1,17 +1,5 @@
 {
   "daily": {
-    "2026-10-05": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
-    "2026-10-06": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-kemal-kilicdaroglu-neden-yoksulluk-var-emekli-perisan-asgari-ucret-cok-dusuk-cunku-devlet-soyuluyor"
-    },
     "2026-10-07": {
       "done": true,
       "spoke_any": true,
@@ -179,10 +167,16 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-11-06": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": true,
+      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-kemal-kilicdaroglu-ntv-canli-yayinina-katildi-6-kasim-2026"
     }
   },
-  "streak": 14,
-  "streak_result": "demedi",
+  "streak": 1,
+  "streak_result": "dedi",
   "last_monthly_post": "2026-10",
   "last_weekly_post": "2026-11-01"
 }
