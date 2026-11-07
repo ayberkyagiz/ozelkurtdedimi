@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-10-07": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-sehit-polis-memuru-ahmet-turkogluna-allahtan-rahmet-diliyorum"
-    },
     "2026-10-08": {
       "done": true,
       "spoke_any": false,
@@ -173,6 +167,12 @@
       "spoke_any": true,
       "kurt_any": true,
       "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-kemal-kilicdaroglu-ntv-canli-yayinina-katildi-6-kasim-2026"
+    },
+    "2026-11-07": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
     }
   },
   "streak": 1,
