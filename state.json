@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-10-08": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-10-09": {
       "done": true,
       "spoke_any": true,
@@ -173,10 +167,16 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-11-08": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglundan-8-kasim-karabag-zafer-gunu-mesaji"
     }
   },
   "streak": 1,
-  "streak_result": "dedi",
+  "streak_result": "demedi",
   "last_monthly_post": "2026-10",
-  "last_weekly_post": "2026-11-01"
+  "last_weekly_post": "2026-11-08"
 }
