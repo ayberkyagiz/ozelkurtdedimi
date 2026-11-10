@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-10-09": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": true,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-krt-tv-canli-yayinina-katildi-9-ekim-2026"
-    },
     "2026-10-10": {
       "done": true,
       "spoke_any": false,
@@ -173,9 +167,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglundan-8-kasim-karabag-zafer-gunu-mesaji"
+    },
+    "2026-11-09": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-aliagadaki-patlamayiyerinde-ncelemek-cin-heyet-gorevlendirdi"
     }
   },
-  "streak": 1,
+  "streak": 2,
   "streak_result": "demedi",
   "last_monthly_post": "2026-10",
   "last_weekly_post": "2026-11-08"
