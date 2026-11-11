@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-10-10": {
-      "done": true,
-      "spoke_any": false,
-      "kurt_any": false,
-      "last_url": null
-    },
     "2026-10-11": {
       "done": true,
       "spoke_any": false,
@@ -173,9 +167,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-aliagadaki-patlamayiyerinde-ncelemek-cin-heyet-gorevlendirdi"
+    },
+    "2026-11-10": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-kemal-kilicdaroglu-bir-bilgeyi-siyasi-ve-askeri-bir-dehayi-ataturku-saygi-rahmet-ve-minnetle-aniyoruz"
     }
   },
-  "streak": 2,
+  "streak": 3,
   "streak_result": "demedi",
   "last_monthly_post": "2026-10",
   "last_weekly_post": "2026-11-08"
