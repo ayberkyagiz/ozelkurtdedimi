@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-10-13": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/cumhuriyet-halk-partisi-genel-baskani-kemal-kilicdaroglu-saibeli-adamin-chpde-yeri-yoktur"
-    },
     "2026-10-14": {
       "done": true,
       "spoke_any": true,
@@ -173,6 +167,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglundan-malatyadaki-helikopter-kazasina-liskin-taziye-mesaji"
+    },
+    "2026-11-13": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
     }
   },
   "streak": 5,
