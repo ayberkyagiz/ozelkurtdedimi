@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-10-16": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-heyeti-kapanma-tehlikesi-yasayan-amasya-suluova-seker-fabrikasi-cin-genel-baskanimiz-kemal-kilicdaroglunun-talimatiyla-sahaya-niyor"
-    },
     "2026-10-17": {
       "done": true,
       "spoke_any": true,
@@ -173,9 +167,15 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-11-16": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-saadet-partisi-genel-baskani-mahmut-arikan-ile-bir-araya-geldi"
     }
   },
-  "streak": 6,
+  "streak": 7,
   "streak_result": "demedi",
   "last_monthly_post": "2026-10",
   "last_weekly_post": "2026-11-15"
