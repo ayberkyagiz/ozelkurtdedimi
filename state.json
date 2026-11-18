@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-10-17": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-tarsus-cezaevinde-tutuklu-bulunan-vahap-secer-ile-abdullah-ozyigiti-ziyaret-etti"
-    },
     "2026-10-18": {
       "done": true,
       "spoke_any": false,
@@ -173,9 +167,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-saadet-partisi-genel-baskani-mahmut-arikan-ile-bir-araya-geldi"
+    },
+    "2026-11-17": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-chp-yolsuzluklara-kapi-aralayan-sikayet-eden-degil-cozum-ureten-bir-partidir"
     }
   },
-  "streak": 7,
+  "streak": 8,
   "streak_result": "demedi",
   "last_monthly_post": "2026-10",
   "last_weekly_post": "2026-11-15"
