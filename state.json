@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-10-20": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-lideri-kilicdaroglu-namuslu-nsanlarin-dislandigi-soyguncularin-bas-taci-edildigi-bir-surecten-geciyoruz"
-    },
     "2026-10-21": {
       "done": true,
       "spoke_any": true,
@@ -173,6 +167,12 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-roman-koordinasyon-kurulu-toplantisina-katildi-biz-bu-sorunu-cozmeye-talibiz"
+    },
+    "2026-11-20": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
     }
   },
   "streak": 10,
