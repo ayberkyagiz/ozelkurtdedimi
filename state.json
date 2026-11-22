@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-10-21": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglundan-abye-libya-tepkisi-somurge-caginda-degiliz"
-    },
     "2026-10-22": {
       "done": true,
       "spoke_any": true,
@@ -169,6 +163,12 @@
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-roman-koordinasyon-kurulu-toplantisina-katildi-biz-bu-sorunu-cozmeye-talibiz"
     },
     "2026-11-20": {
+      "done": true,
+      "spoke_any": false,
+      "kurt_any": false,
+      "last_url": null
+    },
+    "2026-11-21": {
       "done": true,
       "spoke_any": false,
       "kurt_any": false,
