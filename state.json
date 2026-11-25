@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-10-24": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-gaziantepte-genclere-seslendi-ataturkculuk-gelecegi-demokrasiyle-nsa-etmektir"
-    },
     "2026-10-25": {
       "done": true,
       "spoke_any": false,
@@ -173,9 +167,15 @@
       "spoke_any": true,
       "kurt_any": false,
       "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-dyp-genel-baskani-cenk-kupeli-ile-bir-araya-geldi"
+    },
+    "2026-11-24": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglu-belediye-baskanini-transfer-ettiniz-diye-halkin-oylari-size-gelmez"
     }
   },
-  "streak": 11,
+  "streak": 12,
   "streak_result": "demedi",
   "last_monthly_post": "2026-10",
   "last_weekly_post": "2026-11-22"
