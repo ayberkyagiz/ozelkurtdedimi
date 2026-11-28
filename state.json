@@ -1,11 +1,5 @@
 {
   "daily": {
-    "2026-10-27": {
-      "done": true,
-      "spoke_any": true,
-      "kurt_any": false,
-      "last_url": "https://chp.org.tr/haberler/chp-genel-baskani-kemal-kilicdaroglundan-stanbul-barosu-baskani-umit-kocasakala-tebrik-telefonu"
-    },
     "2026-10-28": {
       "done": true,
       "spoke_any": false,
@@ -173,9 +167,15 @@
       "spoke_any": false,
       "kurt_any": false,
       "last_url": null
+    },
+    "2026-11-27": {
+      "done": true,
+      "spoke_any": true,
+      "kurt_any": false,
+      "last_url": "https://chp.org.tr/haberler/chp-lideri-kemal-kilicdaroglu-onceki-chp-genel-baskani-ve-tbmm-baskani-hikmet-cetinin-cenaze-torenine-katildi"
     }
   },
-  "streak": 12,
+  "streak": 13,
   "streak_result": "demedi",
   "last_monthly_post": "2026-10",
   "last_weekly_post": "2026-11-22"
